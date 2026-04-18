@@ -1,0 +1,1513 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AACR 2026 中国创新药深度调研报告</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap');
+
+  :root {
+    --primary: #1a1a2e;
+    --accent: #e94560;
+    --accent2: #f5a623;
+    --accent3: #0f3460;
+    --accent4: #16213e;
+    --light: #f8f9fa;
+    --text: #2d2d2d;
+    --text-light: #666;
+    --border: #e0e0e0;
+    --gold: #d4a017;
+    --green: #27ae60;
+    --blue: #2980b9;
+    --purple: #8e44ad;
+    --teal: #16a085;
+    --red: #c0392b;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    background: #f0f2f5;
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  .page-wrapper {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  /* ===== HERO HEADER ===== */
+  .hero {
+    background: linear-gradient(135deg, #0f1923 0%, #1a1a2e 40%, #16213e 70%, #0f3460 100%);
+    border-radius: 16px;
+    padding: 48px 56px;
+    margin-bottom: 24px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -10%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(233,69,96,0.15) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -30%;
+    left: 20%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(245,166,35,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(233,69,96,0.2);
+    border: 1px solid rgba(233,69,96,0.4);
+    color: #ff6b8a;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  .hero-badge::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: #ff6b8a;
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.5); }
+  }
+
+  .hero h1 {
+    font-size: 38px;
+    font-weight: 900;
+    color: #fff;
+    line-height: 1.2;
+    margin-bottom: 12px;
+    letter-spacing: -0.5px;
+  }
+
+  .hero h1 span {
+    background: linear-gradient(90deg, #e94560, #f5a623);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .hero-subtitle {
+    font-size: 16px;
+    color: rgba(255,255,255,0.65);
+    margin-bottom: 32px;
+    font-weight: 300;
+  }
+
+  .hero-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+
+  .hero-stat {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    transition: all 0.3s;
+  }
+
+  .hero-stat:hover {
+    background: rgba(255,255,255,0.1);
+    transform: translateY(-2px);
+  }
+
+  .hero-stat .num {
+    font-size: 32px;
+    font-weight: 900;
+    background: linear-gradient(135deg, #e94560, #f5a623);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: block;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .hero-stat .label {
+    font-size: 12px;
+    color: rgba(255,255,255,0.55);
+    font-weight: 400;
+  }
+
+  .hero-meta {
+    margin-top: 28px;
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .hero-meta-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: rgba(255,255,255,0.5);
+    font-size: 13px;
+  }
+
+  .hero-meta-item svg {
+    opacity: 0.7;
+  }
+
+  /* ===== SECTION STRUCTURE ===== */
+  .sections-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 20px;
+  }
+
+  .section-full {
+    margin-bottom: 20px;
+  }
+
+  .card {
+    background: #fff;
+    border-radius: 14px;
+    padding: 28px 32px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    height: 100%;
+  }
+
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid #f0f0f0;
+  }
+
+  .card-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+
+  .card-title {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--primary);
+  }
+
+  .card-title small {
+    display: block;
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--text-light);
+    margin-top: 2px;
+  }
+
+  /* ===== PLENARY TABLE ===== */
+  .plenary-item {
+    display: flex;
+    gap: 16px;
+    padding: 16px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #fff9f0, #fff5e6);
+    border: 1px solid #fde5b8;
+    margin-bottom: 12px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .plenary-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: linear-gradient(180deg, #e94560, #f5a623);
+    border-radius: 4px 0 0 4px;
+  }
+
+  .plenary-badge {
+    background: linear-gradient(135deg, #e94560, #c0392b);
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 20px;
+    white-space: nowrap;
+    height: fit-content;
+    letter-spacing: 0.5px;
+  }
+
+  .plenary-content .company {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 3px;
+  }
+
+  .plenary-content .drug {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--primary);
+    margin-bottom: 4px;
+  }
+
+  .plenary-content .desc {
+    font-size: 12px;
+    color: var(--text-light);
+    line-height: 1.5;
+  }
+
+  /* ===== DATA TABLES ===== */
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+
+  .data-table th {
+    background: #f8f9fa;
+    color: #555;
+    font-weight: 600;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 10px 12px;
+    text-align: left;
+    border-bottom: 2px solid #eee;
+  }
+
+  .data-table td {
+    padding: 10px 12px;
+    border-bottom: 1px solid #f5f5f5;
+    vertical-align: top;
+    line-height: 1.5;
+  }
+
+  .data-table tr:last-child td {
+    border-bottom: none;
+  }
+
+  .data-table tr:hover td {
+    background: #fafafa;
+  }
+
+  .data-table .company-tag {
+    display: inline-block;
+    font-weight: 700;
+    color: var(--accent3);
+  }
+
+  .data-table .drug-tag {
+    display: inline-block;
+    font-weight: 600;
+    color: var(--primary);
+  }
+
+  .data-table .highlight {
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  .tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .tag-red { background: #fff0f0; color: #e94560; }
+  .tag-orange { background: #fff8ec; color: #f5a623; }
+  .tag-blue { background: #e8f4fd; color: #2980b9; }
+  .tag-green { background: #eafaf1; color: #27ae60; }
+  .tag-purple { background: #f5eef8; color: #8e44ad; }
+  .tag-teal { background: #e8f8f5; color: #16a085; }
+  .tag-gray { background: #f5f5f5; color: #666; }
+
+  /* ===== TIMELINE ===== */
+  .timeline {
+    position: relative;
+    padding-left: 28px;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 8px;
+    top: 8px;
+    bottom: 8px;
+    width: 2px;
+    background: linear-gradient(180deg, #e94560, #f5a623, #27ae60);
+    border-radius: 2px;
+  }
+
+  .timeline-item {
+    position: relative;
+    margin-bottom: 20px;
+    padding: 14px 16px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    border: 1px solid #eee;
+    transition: all 0.2s;
+  }
+
+  .timeline-item:hover {
+    background: #fff;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    transform: translateX(4px);
+  }
+
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -24px;
+    top: 18px;
+    width: 12px;
+    height: 12px;
+    background: #fff;
+    border: 3px solid #e94560;
+    border-radius: 50%;
+    z-index: 1;
+  }
+
+  .timeline-item.key::before {
+    border-color: #f5a623;
+    background: #f5a623;
+    box-shadow: 0 0 0 4px rgba(245,166,35,0.2);
+  }
+
+  .timeline-date {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .timeline-date .stars {
+    color: #f5a623;
+    font-size: 10px;
+  }
+
+  .timeline-content {
+    font-size: 13px;
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  /* ===== TREND CARDS ===== */
+  .trend-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+  }
+
+  .trend-card {
+    background: linear-gradient(135deg, #f8f9fa, #fff);
+    border: 1px solid #eee;
+    border-radius: 12px;
+    padding: 18px;
+    text-align: center;
+    transition: all 0.3s;
+  }
+
+  .trend-card:hover {
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    transform: translateY(-3px);
+  }
+
+  .trend-icon {
+    font-size: 28px;
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  .trend-num {
+    font-size: 24px;
+    font-weight: 900;
+    color: var(--accent);
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .trend-label {
+    font-size: 12px;
+    color: var(--text-light);
+    line-height: 1.4;
+  }
+
+  /* ===== COMPANY GRID ===== */
+  .company-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .company-item {
+    display: flex;
+    gap: 12px;
+    padding: 14px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    border: 1px solid #eee;
+    transition: all 0.2s;
+  }
+
+  .company-item:hover {
+    background: #fff;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  }
+
+  .company-rank {
+    width: 28px;
+    height: 28px;
+    background: linear-gradient(135deg, #e94560, #c0392b);
+    color: #fff;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .company-name {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 4px;
+  }
+
+  .company-desc {
+    font-size: 11px;
+    color: var(--text-light);
+    line-height: 1.5;
+  }
+
+  /* ===== RISK SECTION ===== */
+  .risk-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+  }
+
+  .risk-item {
+    padding: 16px;
+    border-radius: 10px;
+    text-align: center;
+  }
+
+  .risk-item:nth-child(1) { background: #fff0f0; border: 1px solid #ffd5d5; }
+  .risk-item:nth-child(2) { background: #fff8ec; border: 1px solid #ffe8b5; }
+  .risk-item:nth-child(3) { background: #f0f8ff; border: 1px solid #c8e4ff; }
+  .risk-item:nth-child(4) { background: #f0fff4; border: 1px solid #b5f0c8; }
+  .risk-item:nth-child(5) { background: #f8f0ff; border: 1px solid #e0c8ff; }
+
+  .risk-icon { font-size: 22px; display: block; margin-bottom: 8px; }
+  .risk-title { font-size: 12px; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+  .risk-desc { font-size: 11px; color: var(--text-light); line-height: 1.5; }
+
+  /* ===== FOOTER ===== */
+  .footer {
+    background: linear-gradient(135deg, #1a1a2e, #0f3460);
+    border-radius: 14px;
+    padding: 24px 32px;
+    color: rgba(255,255,255,0.6);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+  }
+
+  .footer .footer-left strong { color: rgba(255,255,255,0.9); }
+  .footer .disclaimer {
+    font-size: 11px;
+    max-width: 500px;
+    text-align: right;
+    line-height: 1.6;
+  }
+
+  /* ===== HIGHLIGHT BOX ===== */
+  .insight-box {
+    background: linear-gradient(135deg, #fff9f0, #fff5e6);
+    border: 1px solid #fde5b8;
+    border-left: 4px solid #f5a623;
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin-top: 16px;
+    font-size: 13px;
+    color: #7a5a20;
+    line-height: 1.7;
+  }
+
+  .insight-box strong { color: #c67c00; }
+
+  /* ===== SECTION DIVIDER ===== */
+  .section-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg, var(--primary), var(--accent3));
+    color: #fff;
+    padding: 6px 16px 6px 12px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  /* ===== BD TABLE ===== */
+  .bd-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    border-radius: 8px;
+    background: #f8f9fa;
+    border: 1px solid #eee;
+    margin-bottom: 8px;
+    font-size: 13px;
+  }
+
+  .bd-company { font-weight: 700; color: var(--primary); }
+  .bd-drug { color: var(--text-light); font-size: 12px; }
+  .bd-tag { }
+
+  /* ===== RESPONSIVE ===== */
+  @media print {
+    body { background: #fff; }
+    .page-wrapper { max-width: 100%; padding: 0; }
+    .hero { border-radius: 0; }
+  }
+
+  /* scrollbar */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: #f1f1f1; }
+  ::-webkit-scrollbar-thumb { background: #ccc; border-radius: 3px; }
+
+  .section-number {
+    display: inline-block;
+    background: var(--accent);
+    color: white;
+    width: 22px;
+    height: 22px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    text-align: center;
+    line-height: 22px;
+    margin-right: 4px;
+    flex-shrink: 0;
+  }
+
+  .pill {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 600;
+    margin-right: 4px;
+    margin-bottom: 2px;
+  }
+  .pill-red { background: rgba(233,69,96,0.12); color: #e94560; }
+  .pill-blue { background: rgba(41,128,185,0.12); color: #2980b9; }
+  .pill-green { background: rgba(39,174,96,0.12); color: #27ae60; }
+  .pill-gold { background: rgba(212,160,23,0.12); color: #b8860b; }
+  .pill-purple { background: rgba(142,68,173,0.12); color: #8e44ad; }
+
+  .star-rating {
+    color: #f5a623;
+    font-size: 12px;
+  }
+</style>
+</head>
+<body>
+<div class="page-wrapper">
+
+  <!-- ===== HERO ===== -->
+  <div class="hero">
+    <div class="hero-badge">🔬 AACR 2026 · 深度调研报告</div>
+    <h1>中国创新药 <span>AACR 2026</span><br>深度调研报告</h1>
+    <p class="hero-subtitle">美国癌症研究协会年会 · 圣地亚哥 · 2026年4月17–22日 | 中国已成全球第二大参与国</p>
+
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <span class="num">140+</span>
+        <span class="label">中国参展药企</span>
+      </div>
+      <div class="hero-stat">
+        <span class="num">400</span>
+        <span class="label">中国研究成果（项）</span>
+      </div>
+      <div class="hero-stat">
+        <span class="num">92</span>
+        <span class="label">中国ADC药物</span>
+      </div>
+      <div class="hero-stat">
+        <span class="num">13</span>
+        <span class="label">入选口头报告（家）</span>
+      </div>
+    </div>
+
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        报告编制：2026年4月16日
+      </div>
+      <div class="hero-meta-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        数据截止：2026年4月15日
+      </div>
+      <div class="hero-meta-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        圣地亚哥 · San Diego, CA
+      </div>
+      <div class="hero-meta-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2-2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        下一更新：4月18日摘要解禁后
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== SECTION 1: 口头报告 + 时间轴 ===== -->
+  <div class="sections-grid">
+
+    <!-- 全体大会口头报告 -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon" style="background: linear-gradient(135deg, #e94560, #c0392b);">🎤</div>
+        <div class="card-title">
+          全体大会口头报告
+          <small>Clinical Trials Plenary Session · 4月19日 3:30 PM PDT</small>
+        </div>
+      </div>
+
+      <div class="plenary-item">
+        <div>
+          <div class="plenary-badge">石药集团</div>
+        </div>
+        <div class="plenary-content">
+          <div class="drug">SYS6010 — EGFR ADC</div>
+          <div class="desc">晚期鼻咽癌 · 首次人体研究结果 · 针对"中国癌"深度定制化研发</div>
+          <div style="margin-top: 6px;">
+            <span class="pill pill-red">EGFR靶向</span>
+            <span class="pill pill-gold">中国癌</span>
+            <span class="pill pill-blue">FIH</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="plenary-item">
+        <div>
+          <div class="plenary-badge">齐鲁制药</div>
+        </div>
+        <div class="plenary-content">
+          <div class="drug">QLS5132 — CLDN6 ADC</div>
+          <div class="desc">铂耐药卵巢癌 · 新靶点攻克难治性实体瘤 · 正常组织低表达，安全窗宽</div>
+          <div style="margin-top: 6px;">
+            <span class="pill pill-purple">CLDN6</span>
+            <span class="pill pill-red">铂耐药</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="plenary-item">
+        <div>
+          <div class="plenary-badge">翰森制药</div>
+        </div>
+        <div class="plenary-content">
+          <div class="drug">risvutatug rezetecan — B7-H3 ADC</div>
+          <div class="desc">非鳞状非小细胞肺癌 · 海外权益已授权GSK · 探索联合免疫疗法</div>
+          <div style="margin-top: 6px;">
+            <span class="pill pill-blue">B7-H3</span>
+            <span class="pill pill-green">GSK授权</span>
+            <span class="pill pill-gold">IO联合</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="insight-box">
+        <strong>标志性事件：</strong>德昇济医药 <strong>elisrasib（KRAS G12C）</strong>成为<strong>中国原创KRAS抑制剂首次入选Plenary Session</strong>，是本届大会的里程碑事件，代表中国小分子创新药从"跟跑"到"领跑"的质变。
+      </div>
+    </div>
+
+    <!-- 时间轴 -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon" style="background: linear-gradient(135deg, #f5a623, #e67e22);">⏱</div>
+        <div class="card-title">
+          催化剂时间轴
+          <small>北京时间 · 关键数据披露节点</small>
+        </div>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline-item key">
+          <div class="timeline-date">
+            4月18日（周五）
+            <span class="stars">★★★★★</span>
+          </div>
+          <div class="timeline-content">
+            <strong>全部摘要正式解禁</strong> — 数据密集披露日，本届AACR最重要时间节点。所有壁报标题及初步数据公开。
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-date">
+            4月19日
+            <span class="stars">★★★★★</span>
+          </div>
+          <div class="timeline-content">
+            <strong>全体大会口头报告（3:30 PM PDT）</strong><br>
+            石药集团SYS6010 EGFR ADC · 翰森制药B7-H3 ADC · 德昇济elisrasib KRAS G12C
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-date">
+            4月20日
+            <span class="stars">★★★</span>
+          </div>
+          <div class="timeline-content">
+            亚盛APG-2449（BRAF V600E） · 和黄医药HMPL-A580（ATTC平台首次亮相） · 恒瑞SHR-A1811联合疗法数据
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-date">
+            4月20–21日
+            <span class="stars">★★★★</span>
+          </div>
+          <div class="timeline-content">
+            <strong>君实JS212 FIH临床数据（CT128）</strong> — EGFR/HER3双抗ADC首次人体初步结果，研究者陆舜
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-date">
+            4月21日
+            <span class="stars">★★★★</span>
+          </div>
+          <div class="timeline-content">
+            <strong>荣昌生物PR-ADC壁报</strong>（全球首创载荷回收型ADC） · 亚盛奥雷巴替尼EC/MCL · 亚盛APG-5918 SCLC · 和誉医药LB350等多项壁报
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-date">
+            4月22日
+            <span class="stars">★★</span>
+          </div>
+          <div class="timeline-content">
+            全部壁报展示汇总，基石药业CS5007/CS5008/CS5006三款ADC展示，大会闭幕
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== SECTION 2: ADC赛道 ===== -->
+  <div class="section-full">
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon" style="background: linear-gradient(135deg, #8e44ad, #6c3483);">💊</div>
+        <div class="card-title">
+          ADC药物赛道 — 92款中国ADC亮相，占全球35%
+          <small>抗体药物偶联物 · 本届AACR最密集赛道</small>
+        </div>
+      </div>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>公司</th>
+            <th>药物</th>
+            <th>靶点</th>
+            <th>研究阶段</th>
+            <th>核心看点</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="company-tag">恒瑞医药</span></td>
+            <td><span class="drug-tag">SHR-A1811</span></td>
+            <td><span class="tag tag-purple">HER2 ADC</span></td>
+            <td>1b/2期随机队列</td>
+            <td>联合阿得贝利单抗一线治疗<strong>HER2突变NSCLC</strong>，IO+ADC协同策略（报告人：陆舜）</td>
+          </tr>
+          <tr>
+            <td><span class="company-tag">荣昌生物</span></td>
+            <td><span class="drug-tag">PR-ADC平台</span></td>
+            <td><span class="tag tag-teal">MSLN载荷回收</span></td>
+            <td>临床前</td>
+            <td class="highlight">🌟 全球首创Payload-Recycling技术，主动捕捉游离MMAE毒素，大幅拓宽治疗窗</td>
+          </tr>
+          <tr>
+            <td><span class="company-tag">基石药业</span></td>
+            <td><span class="drug-tag">CS5007</span></td>
+            <td><span class="tag tag-blue">EGFR/HER3双抗ADC</span></td>
+            <td>临床前（2026初IND）</td>
+            <td>双靶点克服肿瘤异质性，3周给药周期，高选择性</td>
+          </tr>
+          <tr>
+            <td><span class="company-tag">基石药业</span></td>
+            <td><span class="drug-tag">CS5008</span></td>
+            <td><span class="tag tag-red">SSTR2/DLL3双抗ADC</span></td>
+            <td>临床前（2026底IND）</td>
+            <td class="highlight">双靶精准打击<strong>小细胞肺癌</strong>，克服SCLC异质性，市场最期待看点之一</td>
+          </tr>
+          <tr>
+            <td><span class="company-tag">基石药业</span></td>
+            <td><span class="drug-tag">CS5006</span></td>
+            <td><span class="tag tag-orange">ITGB4 ADC</span></td>
+            <td>临床前（2026下半年IND）</td>
+            <td>实体瘤新靶点，潜在First-in-Class</td>
+          </tr>
+          <tr>
+            <td><span class="company-tag">翰思艾泰</span></td>
+            <td><span class="drug-tag">HX116</span></td>
+            <td><span class="tag tag-purple">PD-(L)1/VEGF双抗ADC</span></td>
+            <td>壁报</td>
+            <td>首创双抗ADC，活性优于母体BsAb，免疫+抗血管+细胞毒三联机制</td>
+          </tr>
+          <tr>
+            <td><span class="company-tag">翰思艾泰</span></td>
+            <td><span class="drug-tag">HX112</span></td>
+            <td><span class="tag tag-blue">PD-L1 ADC</span></td>
+            <td>壁报</td>
+            <td>新型PD-L1靶向ADC，泛实体瘤广谱活性</td>
+          </tr>
+          <tr>
+            <td><span class="company-tag">石药集团</span></td>
+            <td><span class="drug-tag">SYS6010</span></td>
+            <td><span class="tag tag-red">EGFR ADC</span></td>
+            <td>全体大会口头报告</td>
+            <td class="highlight">晚期鼻咽癌，中国癌定制化研发，入选AACR最高级别展示</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="insight-box" style="margin-top: 16px;">
+        <strong>2026年最大技术趋势——多载荷ADC爆发：</strong>百奥赛图ITGB6/B7-H3双载荷ADC、普灵生物PLB-015 HER2双载荷ADC等<strong>11个项目</strong>入选最新突破性壁报，中国企业占全球多载荷ADC项目<strong>50%以上</strong>，已在下一代ADC技术方向<strong>拔得头筹</strong>。
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== SECTION 3+4: 双抗 + 小分子 ===== -->
+  <div class="sections-grid">
+
+    <!-- 双/多特异性抗体 -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon" style="background: linear-gradient(135deg, #2980b9, #1a5276);">🔗</div>
+        <div class="card-title">
+          双/多特异性抗体 & TCE
+          <small>下一代IO · 多重检查点阻断</small>
+        </div>
+      </div>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>公司</th>
+            <th>药物</th>
+            <th>靶点</th>
+            <th>核心看点</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="company-tag">百济神州</span></td>
+            <td>替雷利珠单抗组合</td>
+            <td><span class="tag tag-blue">PD-1+TIM-3/LAG-3</span></td>
+            <td>多重检查点阻断，头颈鳞癌一线2期</td>
+          </tr>
+          <tr>
+            <td><span class="company-tag">恒瑞医药</span></td>
+            <td>三抗</td>
+            <td><span class="tag tag-red">PD-1/VEGF/CTLA-4</span></td>
+            <td>入选最新突破性研究，临床前</td>
+          </tr>
+          <tr>
+            <td><span class="company-tag">恒瑞医药</span></td>
+            <td>ProTCE-PSMA</td>
+            <td><span class="tag tag-purple">PSMA/CD3前药双抗</span></td>
+            <td>前列腺癌，前药设计降低CRS风险</td>
+          </tr>
+          <tr>
+            <td><span class="company-tag">复宏汉霖</span></td>
+            <td>HLX3902</td>
+            <td><span class="tag tag-teal">STEAP1/CD3/CD28三抗</span></td>
+            <td class="highlight">全球首个三特异性共刺激TCE，前列腺癌</td>
+          </tr>
+          <tr>
+            <td><span class="company-tag">复宏汉霖</span></td>
+            <td>HLX22</td>
+            <td><span class="tag tag-purple">HER2×HER2双表位ADC</span></td>
+            <td>同类最佳潜力，乳腺癌/胃癌</td>
+          </tr>
+          <tr>
+            <td><span class="company-tag">艾博生物</span></td>
+            <td>ABO2203</td>
+            <td><span class="tag tag-red">CD19/CD3 TCE（mRNA）</span></td>
+            <td class="highlight">全球首个mRNA体内TCE，入选重磅临床试验报告</td>
+          </tr>
+          <tr>
+            <td><span class="company-tag">翰思艾泰</span></td>
+            <td>HX044</td>
+            <td><span class="tag tag-green">CTLA-4/SIRPα双功能</span></td>
+            <td>下一代CTLA-4，克服PD-1耐药</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="insight-box">
+        <strong>mRNA-TCE里程碑：</strong>艾博生物ABO2203是全球<strong>首个mRNA体内TCE</strong>，标志着TCE技术进入mRNA体内表达新时代，在肿瘤及自免疾病领域具有颠覆性潜力。
+      </div>
+    </div>
+
+    <!-- 小分子靶向药 -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon" style="background: linear-gradient(135deg, #27ae60, #1e8449);">⚗️</div>
+        <div class="card-title">
+          小分子靶向药 & KRAS
+          <small>原创小分子 · 耐药攻克 · 三代迭代</small>
+        </div>
+      </div>
+
+      <!-- KRAS高亮 -->
+      <div style="background: linear-gradient(135deg, #f0fff4, #e8f8f1); border: 1px solid #a9e4b8; border-radius: 10px; padding: 14px 16px; margin-bottom: 16px;">
+        <div style="font-size: 12px; font-weight: 700; color: #27ae60; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px;">🌟 KRAS抑制剂 — 中国原创里程碑</div>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>公司</th>
+              <th>药物</th>
+              <th>靶点</th>
+              <th>看点</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="company-tag">德昇济医药</span></td>
+              <td><strong>elisrasib</strong></td>
+              <td><span class="tag tag-green">KRAS G12C</span></td>
+              <td class="highlight">中国首个KRAS抑制剂入选Plenary，二代克服耐药</td>
+            </tr>
+            <tr>
+              <td><span class="company-tag">和誉医药</span></td>
+              <td>ABSK211</td>
+              <td><span class="tag tag-green">pan-KRAS</span></td>
+              <td>口服广谱KRAS抑制剂，联合疗法</td>
+            </tr>
+            <tr>
+              <td><span class="company-tag">和誉医药</span></td>
+              <td>ABSK131</td>
+              <td><span class="tag tag-blue">PRMT5（MTA协同）</span></td>
+              <td>联合多种药物协同抗肿瘤</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>公司</th>
+            <th>药物</th>
+            <th>靶点</th>
+            <th>阶段/看点</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="company-tag">亚盛医药</span></td>
+            <td>奥雷巴替尼</td>
+            <td><span class="tag tag-blue">多靶点激酶</span></td>
+            <td>子宫内膜癌/套细胞淋巴瘤 · 4月21日</td>
+          </tr>
+          <tr>
+            <td><span class="company-tag">亚盛医药</span></td>
+            <td>APG-2449</td>
+            <td><span class="tag tag-blue">FAK/ALK/ROS1</span></td>
+            <td>BRAF V600E突变肿瘤 · 4月20日</td>
+          </tr>
+          <tr>
+            <td><span class="company-tag">亚盛医药</span></td>
+            <td>APG-5918</td>
+            <td><span class="tag tag-purple">PRC2/EED</span></td>
+            <td>SCLC增强化疗敏感性 · 4月21日</td>
+          </tr>
+          <tr>
+            <td><span class="company-tag">中国生物制药</span></td>
+            <td>Dirozalkib</td>
+            <td><span class="tag tag-red">ALK抑制剂</span></td>
+            <td>三期头对头vs克唑替尼（CT299）</td>
+          </tr>
+          <tr>
+            <td><span class="company-tag">百济神州</span></td>
+            <td>BGB-21447</td>
+            <td><span class="tag tag-teal">下一代BCL-2</span></td>
+            <td>克服venetoclax耐药G101V/D103Y</td>
+          </tr>
+          <tr>
+            <td><span class="company-tag">百济神州</span></td>
+            <td>Sonrotoclax</td>
+            <td><span class="tag tag-teal">BCL-2抑制剂</span></td>
+            <td>MCL三期积极，冲刺上市</td>
+          </tr>
+          <tr>
+            <td><span class="company-tag">和誉医药</span></td>
+            <td>ABK-EGFR-1</td>
+            <td><span class="tag tag-orange">4代EGFR C797S</span></td>
+            <td>高选择性 + 脑穿透性</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ===== SECTION 5: 细胞治疗 + 核药 + 用户关注公司 ===== -->
+  <div class="sections-grid">
+
+    <!-- 细胞治疗 & 核药 -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon" style="background: linear-gradient(135deg, #e74c3c, #922b21);">🧬</div>
+        <div class="card-title">
+          细胞治疗 & 核药 RDC
+          <small>实体瘤CAR-T突破 · 诊疗一体化核药</small>
+        </div>
+      </div>
+
+      <div style="margin-bottom: 16px;">
+        <div class="section-label">🔴 CAR-T / TIL 细胞治疗</div>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>公司/机构</th>
+              <th>药物</th>
+              <th>靶点</th>
+              <th>核心看点</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="company-tag">科济药业</span></td>
+              <td><strong>CT041</strong></td>
+              <td><span class="tag tag-teal">Claudin18.2 CAR-T</span></td>
+              <td class="highlight">有望成为<strong>全球首个实体瘤CAR-T产品</strong></td>
+            </tr>
+            <tr>
+              <td><span class="company-tag">北大肿瘤医院</span></td>
+              <td>LACO-Stim装甲化CAR-T</td>
+              <td><span class="tag tag-blue">间皮素</span></td>
+              <td>合成生物学×细胞治疗，CAR-T自产细胞因子打破抑制微环境</td>
+            </tr>
+            <tr>
+              <td><span class="company-tag">华赛伯曼医学</span></td>
+              <td>FAST-TIL</td>
+              <td><span class="tag tag-green">肿瘤浸润淋巴细胞</span></td>
+              <td>快速制备、低IL-2依赖，黑色素瘤1期</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div>
+        <div class="section-label">☢️ 核药 RDC</div>
+        <div class="bd-item">
+          <div>
+            <div class="bd-company">纳安生物</div>
+            <div class="bd-drug">靶点：TF（组织因子）</div>
+          </div>
+          <span class="pill pill-red">全球首个TF靶点临床核药</span>
+        </div>
+        <div style="font-size: 12px; color: var(--text-light); padding: 8px 12px; line-height: 1.6;">
+          全球首个进入临床的TF靶点诊疗一体化核药，实现肿瘤精准定位与治疗双重功能。
+        </div>
+      </div>
+
+      <div>
+        <div class="section-label" style="margin-top: 16px;">🫁 围手术期免疫治疗</div>
+        <div class="bd-item" style="flex-direction: column; align-items: flex-start; gap: 8px;">
+          <div style="display: flex; justify-content: space-between; width: 100%; align-items: center;">
+            <div class="bd-company">广东省人民医院（吴一龙团队）</div>
+            <span class="pill pill-green">3期EFS期中分析</span>
+          </div>
+          <div style="font-size: 12px; color: var(--text-light); line-height: 1.6;">
+            阿得贝利单抗+化疗 · 可切除II-III期NSCLC · <strong>首次引入MRD分析</strong>，有望实现肺癌"早诊早治"，通过液体活检预判复发风险
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 用户重点关注公司 -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon" style="background: linear-gradient(135deg, #f5a623, #d35400);">⭐</div>
+        <div class="card-title">
+          重点跟踪公司摘要
+          <small>港股创新药企 · AACR 2026 核心看点</small>
+        </div>
+      </div>
+
+      <div class="company-grid">
+        <div class="company-item">
+          <div class="company-rank">01</div>
+          <div>
+            <div class="company-name">基石药业 ⭐</div>
+            <div class="company-desc">CS5007/CS5008/CS5006三款ADC（EGFR/HER3、SSTR2/DLL3、ITGB4），全部壁报展示，差异化双特异性ADC平台</div>
+          </div>
+        </div>
+
+        <div class="company-item">
+          <div class="company-rank">02</div>
+          <div>
+            <div class="company-name">百济神州</div>
+            <div class="company-desc">BGB-21447（下一代BCL-2）、Sonrotoclax（MCL冲刺上市）、BGB-58067（PRMT5）3款研究</div>
+          </div>
+        </div>
+
+        <div class="company-item">
+          <div class="company-rank">03</div>
+          <div>
+            <div class="company-name">康方生物</div>
+            <div class="company-desc">依沃西（AK112 PD-1/VEGF）已击败K药，全球NDA推进中；AACR或有联合方案新数据</div>
+          </div>
+        </div>
+
+        <div class="company-item">
+          <div class="company-rank">04</div>
+          <div>
+            <div class="company-name">君实生物</div>
+            <div class="company-desc">JS212 FIH临床数据（CT128）+ JS207 PD-1/VEGF联合化疗mCRC（CT152）等4项研究</div>
+          </div>
+        </div>
+
+        <div class="company-item">
+          <div class="company-rank">05</div>
+          <div>
+            <div class="company-name">再鼎医药</div>
+            <div class="company-desc">Zoci（ZL-1310，DLL3 ADC）三期已启动，SCLC ORR历史数据74%，最受关注ADC之一</div>
+          </div>
+        </div>
+
+        <div class="company-item">
+          <div class="company-rank">06</div>
+          <div>
+            <div class="company-name">和黄医药</div>
+            <div class="company-desc">HMPL-A580（PI3K/PIKK-EGFR ATTC全球首创）+ 索凡替尼联合方案两项研究者发起研究</div>
+          </div>
+        </div>
+
+        <div class="company-item">
+          <div class="company-rank">07</div>
+          <div>
+            <div class="company-name">亚盛医药</div>
+            <div class="company-desc">4项临床前研究含摘要编号：奥雷巴替尼EC/MCL、APG-2449 BRAF、APG-5918 SCLC</div>
+          </div>
+        </div>
+
+        <div class="company-item">
+          <div class="company-rank">08</div>
+          <div>
+            <div class="company-name">科伦博泰生物</div>
+            <div class="company-desc">SKB264已获批上市，与默沙东合作9个分子，东方财富研报标注"弹性最大标的"</div>
+          </div>
+        </div>
+
+        <div class="company-item">
+          <div class="company-rank">09</div>
+          <div>
+            <div class="company-name">信达生物</div>
+            <div class="company-desc">IBI343（CLDN18.2 ADC）、IBI3014（TROP-2/PD-L1双抗ADC）等双抗+ADC延续方向</div>
+          </div>
+        </div>
+
+        <div class="company-item">
+          <div class="company-rank">10</div>
+          <div>
+            <div class="company-name">中国生物制药</div>
+            <div class="company-desc">Dirozalkib ALK抑制剂III期头对头vs克唑替尼（CT299），入选临床试验报告</div>
+          </div>
+        </div>
+
+        <div class="company-item">
+          <div class="company-rank">11</div>
+          <div>
+            <div class="company-name">荣昌生物</div>
+            <div class="company-desc">PR-ADC全球首创载荷回收平台，4月21日壁报展示，大分子设计重大突破</div>
+          </div>
+        </div>
+
+        <div class="company-item">
+          <div class="company-rank">12</div>
+          <div>
+            <div class="company-name">翰森制药</div>
+            <div class="company-desc">B7-H3 ADC（risvutatug rezetecan）入选全体大会口头报告，GSK已授权海外权益</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== SECTION 6: 投资逻辑 ===== -->
+  <div class="section-full">
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon" style="background: linear-gradient(135deg, #d4a017, #b8860b);">📈</div>
+        <div class="card-title">
+          投资逻辑与重点标的
+          <small>国金证券核心观点 · 业绩/估值/事件三重周期叠加</small>
+        </div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 24px;">
+        <div>
+          <div class="section-label">🎯 重点标的汇总</div>
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>公司</th>
+                <th>核心催化剂</th>
+                <th>时间</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>石药集团</strong></td>
+                <td>SYS6010 EGFR ADC<span class="pill pill-red" style="margin-left: 6px;">全体大会</span></td>
+                <td>4月19日</td>
+              </tr>
+              <tr>
+                <td><strong>翰森制药</strong></td>
+                <td>B7-H3 ADC（GSK授权）联合疗法</td>
+                <td>4月19日</td>
+              </tr>
+              <tr>
+                <td><strong>恒瑞医药</strong></td>
+                <td>SHR-A1811联合免疫NSCLC数据</td>
+                <td>4月20–21日</td>
+              </tr>
+              <tr>
+                <td><strong>荣昌生物</strong></td>
+                <td>PR-ADC全球首创技术平台<span class="pill pill-green" style="margin-left: 6px;">首创</span></td>
+                <td>4月21日</td>
+              </tr>
+              <tr>
+                <td><strong>基石药业</strong></td>
+                <td>三款差异化ADC管线（CS5007/08/06）</td>
+                <td>壁报展示</td>
+              </tr>
+              <tr>
+                <td><strong>科伦博泰</strong></td>
+                <td>SKB264 + 默沙东合作9分子</td>
+                <td>弹性最大标的</td>
+              </tr>
+              <tr>
+                <td><strong>康方生物</strong></td>
+                <td>依沃西头对头击败K药，全球NDA</td>
+                <td>联合方案数据</td>
+              </tr>
+              <tr>
+                <td><strong>亚盛医药</strong></td>
+                <td>奥雷巴替尼新适应症探索</td>
+                <td>4月21日</td>
+              </tr>
+              <tr>
+                <td><strong>中国生物制药</strong></td>
+                <td>Dirozalkib III期头对头数据</td>
+                <td>CT299</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div>
+          <div class="section-label">💰 BD交易视角</div>
+          <div style="background: linear-gradient(135deg, #f8f9fa, #fff); border: 1px solid #eee; border-radius: 10px; padding: 16px; margin-bottom: 14px;">
+            <div style="font-size: 24px; font-weight: 900; color: var(--accent); margin-bottom: 4px;">400亿美元+</div>
+            <div style="font-size: 12px; color: var(--text-light);">2026年3月全球生物医药BD交易总额</div>
+          </div>
+
+          <div class="section-label">值得关注的BD机会</div>
+          <div class="bd-item">
+            <div>
+              <div class="bd-company">多载荷ADC平台</div>
+              <div class="bd-drug">百奥赛图、普灵生物等11个项目</div>
+            </div>
+            <span class="tag tag-red">高优先级</span>
+          </div>
+          <div class="bd-item">
+            <div>
+              <div class="bd-company">差异化双/三抗TCE</div>
+              <div class="bd-drug">恒瑞医药、复宏汉霖</div>
+            </div>
+            <span class="tag tag-orange">高优先级</span>
+          </div>
+          <div class="bd-item">
+            <div>
+              <div class="bd-company">实体瘤CAR-T突破</div>
+              <div class="bd-drug">科济药业CT041</div>
+            </div>
+            <span class="tag tag-blue">里程碑事件</span>
+          </div>
+          <div class="bd-item">
+            <div>
+              <div class="bd-company">pan-KRAS抑制剂</div>
+              <div class="bd-drug">和誉医药ABSK211</div>
+            </div>
+            <span class="tag tag-green">蓝海赛道</span>
+          </div>
+
+          <div class="insight-box" style="margin-top: 12px;">
+            <strong>国金证券：</strong>创新药板块进入<strong>业绩、估值、事件三重周期叠加</strong>的黄金布局期。信达生物、荣昌生物、诺诚健华等有望迎来2025年<strong>扭亏为盈</strong>历史性里程碑。
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== SECTION 7: 趋势总览 ===== -->
+  <div class="section-full">
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon" style="background: linear-gradient(135deg, #16213e, #0f3460);">🌐</div>
+        <div class="card-title">
+          大会技术趋势总览
+          <small>2026年AACR六大核心技术趋势</small>
+        </div>
+      </div>
+
+      <div class="trend-grid">
+        <div class="trend-card">
+          <span class="trend-icon">💊</span>
+          <span class="trend-num">92款</span>
+          <span class="trend-label">中国ADC药物<br>占全球约35%</span>
+        </div>
+        <div class="trend-card">
+          <span class="trend-icon">🔗</span>
+          <span class="trend-num">11项</span>
+          <span class="trend-label">多载荷ADC项目<br>中国占全球50%+</span>
+        </div>
+        <div class="trend-card">
+          <span class="trend-icon">🧪</span>
+          <span class="trend-num">首次</span>
+          <span class="trend-label">mRNA体内TCE<br>艾博生物全球首创</span>
+        </div>
+        <div class="trend-card">
+          <span class="trend-icon">🧬</span>
+          <span class="trend-num">首款</span>
+          <span class="trend-label">实体瘤CAR-T冲刺<br>科济CT041 CLDN18.2</span>
+        </div>
+        <div class="trend-card">
+          <span class="trend-icon">🎯</span>
+          <span class="trend-num">里程碑</span>
+          <span class="trend-label">中国KRAS抑制剂<br>首次入选Plenary</span>
+        </div>
+        <div class="trend-card">
+          <span class="trend-icon">☢️</span>
+          <span class="trend-num">首个</span>
+          <span class="trend-label">TF靶点RDC<br>核药诊疗一体化</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== RISK SECTION ===== -->
+  <div class="section-full">
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon" style="background: linear-gradient(135deg, #e74c3c, #c0392b);">⚠️</div>
+        <div class="card-title">
+          风险提示
+          <small>投资决策前请充分了解以下风险</small>
+        </div>
+      </div>
+
+      <div class="risk-grid">
+        <div class="risk-item">
+          <span class="risk-icon">🔬</span>
+          <div class="risk-title">数据不确定性</div>
+          <div class="risk-desc">早期临床/临床前数据，不代表最终获批上市</div>
+        </div>
+        <div class="risk-item">
+          <span class="risk-icon">📊</span>
+          <div class="risk-title">股价波动风险</div>
+          <div class="risk-desc">数据披露后相关个股可能存在剧烈波动</div>
+        </div>
+        <div class="risk-item">
+          <span class="risk-icon">⚔️</span>
+          <div class="risk-title">竞争加剧风险</div>
+          <div class="risk-desc">ADC赛道HER2/TROP2靶点同质化严重，差异化是关键</div>
+        </div>
+        <div class="risk-item">
+          <span class="risk-icon">📋</span>
+          <div class="risk-title">政策风险</div>
+          <div class="risk-desc">创新药审评审批、医保谈判政策存在不确定性</div>
+        </div>
+        <div class="risk-item">
+          <span class="risk-icon">🤝</span>
+          <div class="risk-title">海外授权风险</div>
+          <div class="risk-desc">BD交易存在终止或条款变更可能</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== FOOTER ===== -->
+  <div class="footer">
+    <div class="footer-left">
+      <div style="font-size: 15px; margin-bottom: 4px;"><strong>AACR 2026 中国创新药深度调研报告</strong></div>
+      <div style="font-size: 12px; margin-bottom: 2px;">报告编制：2026年4月16日 | 数据截止：2026年4月15日</div>
+      <div style="font-size: 12px;">下一更新节点：<strong style="color: #f5a623;">4月18日摘要全面解禁后</strong></div>
+    </div>
+    <div class="disclaimer">
+      本报告基于上市公司公开披露、券商研报及医药媒体报道，<strong style="color: rgba(255,255,255,0.7);">不构成投资建议</strong>。创新药研发风险高，数据披露后股价可能存在剧烈波动，请注意投资风险。
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
