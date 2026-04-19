@@ -1,0 +1,1494 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-30RDGNHJD7"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-30RDGNHJD7');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI 技术周报 · 2026.04.13 — 04.19（北京时间）</title>
+  <style>
+    :root {
+      --accent: #1a1a2e;
+      --accent2: #16213e;
+      --tag-llm: #e8f5e9; --tag-llm-t: #2e7d32;
+      --tag-train: #e3f2fd; --tag-train-t: #1565c0;
+      --tag-agent: #fff3e0; --tag-agent-t: #e65100;
+      --tag-infra: #fce4ec; --tag-infra-t: #880e4f;
+      --tag-robot: #f3e5f5; --tag-robot-t: #6a1b9a;
+      --tag-mm: #e0f7fa; --tag-mm-t: #006064;
+      --tag-invest: #fff8e1; --tag-invest-t: #f57f17;
+      --tag-industry: #efebe9; --tag-industry-t: #4e342e;
+      --border: #e8e8e8;
+      --text: #1a1a1a;
+      --muted: #666;
+      --bg: #ffffff;
+      --card: #fafafa;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, 'PingFang SC', 'Hiragino Sans GB', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; font-size: 15px; }
+
+    /* ─── HEADER ─── */
+    .header { background: #fff; border-bottom: 2px solid #111; padding: 32px 0 24px; }
+    .header-inner { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+    .header-date { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+    .header-title { font-size: 28px; font-weight: 800; letter-spacing: -.02em; line-height: 1.2; }
+    .header-title span { color: #555; font-weight: 400; font-size: 18px; }
+    .header-sub { margin-top: 10px; font-size: 13px; color: var(--muted); }
+    .header-sub b { color: var(--text); }
+    .source-bar { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 6px; }
+    .src-badge { font-size: 11px; padding: 3px 9px; border: 1px solid #ddd; border-radius: 20px; color: #444; background: #f8f8f8; }
+    .src-badge.primary { border-color: #111; color: #111; font-weight: 600; }
+
+    /* ─── NAV ─── */
+    .sticky-nav { position: sticky; top: 0; z-index: 100; background: #fff; border-bottom: 1px solid var(--border); }
+    .nav-inner { max-width: 960px; margin: 0 auto; padding: 0 24px; display: flex; gap: 0; overflow-x: auto; }
+    .nav-inner a { white-space: nowrap; padding: 11px 16px; font-size: 13px; font-weight: 600; color: #555; text-decoration: none; border-bottom: 2px solid transparent; transition: .15s; }
+    .nav-inner a:hover { color: #111; border-color: #111; }
+
+    /* ─── MAIN ─── */
+    .main { max-width: 960px; margin: 0 auto; padding: 32px 24px 60px; }
+
+    /* ─── SECTION ─── */
+    .section { margin-bottom: 48px; }
+    .section-header { display: flex; align-items: baseline; gap: 12px; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid #111; }
+    .section-icon { font-size: 22px; }
+    .section-title { font-size: 18px; font-weight: 800; letter-spacing: -.01em; }
+    .section-count { font-size: 12px; color: var(--muted); margin-left: auto; }
+
+    /* ─── CARD ─── */
+    .cards { display: grid; gap: 14px; }
+    .card { background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 16px 18px; transition: box-shadow .15s; }
+    .card:hover { box-shadow: 0 2px 12px rgba(0,0,0,.08); }
+    .card.featured { border-color: #111; border-left: 4px solid #111; }
+    .card-meta { display: flex; align-items: center; gap: 8px; margin-bottom: 7px; flex-wrap: wrap; }
+    .tag { font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px; letter-spacing: .03em; }
+    .tag.llm { background: var(--tag-llm); color: var(--tag-llm-t); }
+    .tag.train { background: var(--tag-train); color: var(--tag-train-t); }
+    .tag.agent { background: var(--tag-agent); color: var(--tag-agent-t); }
+    .tag.infra { background: var(--tag-infra); color: var(--tag-infra-t); }
+    .tag.robot { background: var(--tag-robot); color: var(--tag-robot-t); }
+    .tag.mm { background: var(--tag-mm); color: var(--tag-mm-t); }
+    .tag.invest { background: var(--tag-invest); color: var(--tag-invest-t); }
+    .tag.industry { background: var(--tag-industry); color: var(--tag-industry-t); }
+    .card-date { font-size: 11px; color: var(--muted); background: #f0f0f0; padding: 1px 7px; border-radius: 3px; }
+    .card-title { font-size: 15px; font-weight: 700; line-height: 1.4; margin-bottom: 6px; }
+    .card-title a { color: inherit; text-decoration: none; }
+    .card-title a:hover { text-decoration: underline; }
+    .card-body { font-size: 13.5px; color: #444; line-height: 1.65; }
+    .card-body ul { padding-left: 16px; margin-top: 4px; }
+    .card-body li { margin-bottom: 3px; }
+    .card-img { margin-top: 10px; border-radius: 6px; max-height: 240px; object-fit: cover; width: 100%; }
+    .card-kw { margin-top: 8px; display: flex; flex-wrap: wrap; gap: 4px; }
+    .kw { font-size: 11px; color: var(--muted); background: #f2f2f2; padding: 2px 7px; border-radius: 3px; font-family: monospace; }
+
+    /* ─── HIGHLIGHT BOX ─── */
+    .highlight-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; margin-bottom: 40px; }
+    .highlight-item { background: #f8f8f8; border: 1px solid var(--border); border-radius: 8px; padding: 14px 16px; }
+    .hi-num { font-size: 26px; font-weight: 800; line-height: 1; }
+    .hi-label { font-size: 12px; color: var(--muted); margin-top: 4px; }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 640px) {
+      .header-title { font-size: 22px; }
+      .main { padding: 20px 16px 48px; }
+      .highlight-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-inner">
+    <div class="header-date">北京时间 · 2026年4月13日（周一）— 4月19日（周日）</div>
+    <div class="header-title">AI 技术周报 <span>按关键词分类 · 100条目</span></div>
+    <div class="header-sub">覆盖 <b>8大分类 · 每分类10-15条</b> · 所有条目时间均已校验（仅保留4/13-4/19北京时间）</div>
+    <div class="source-bar">
+      <span class="src-badge primary">36Kr</span>
+      <span class="src-badge primary">TechCrunch</span>
+      <span class="src-badge primary">VentureBeat</span>
+      <span class="src-badge primary">Latent.Space</span>
+      <span class="src-badge primary">a16z</span>
+      <span class="src-badge primary">aheadofai</span>
+      <span class="src-badge primary">HackerNews</span>
+      <span class="src-badge primary">GitHub Trending</span>
+      <span class="src-badge primary">极客公园</span>
+      <span class="src-badge primary">华尔街见闻</span>
+      <span class="src-badge primary">腾讯新闻</span>
+      <span class="src-badge primary">微信公众号</span>
+    </div>
+  </div>
+</div>
+
+<!-- NAV -->
+<div class="sticky-nav">
+  <div class="nav-inner">
+    <a href="#llm">🧠 大模型</a>
+    <a href="#train">⚙️ 训练推理</a>
+    <a href="#agent">🤖 Agent</a>
+    <a href="#infra">🔧 基础设施</a>
+    <a href="#robot">🦾 机器人</a>
+    <a href="#mm">🎨 多模态</a>
+    <a href="#invest">💰 投融资</a>
+    <a href="#industry">🌐 行业</a>
+  </div>
+</div>
+
+<div class="main">
+
+  <!-- ═══ 本周亮点 ═══ -->
+  <div class="highlight-grid">
+    <div class="highlight-item">
+      <div class="hi-num">50'26"</div>
+      <div class="hi-label">机器人"闪电"半马冠军，首破人类纪录</div>
+    </div>
+    <div class="highlight-item">
+      <div class="hi-num">$200亿</div>
+      <div class="hi-label">OpenAI与Cerebras达成三年芯片采购协议</div>
+    </div>
+    <div class="highlight-item">
+      <div class="hi-num">87.6%</div>
+      <div class="hi-label">Claude Opus 4.7 SWE-bench Verified得分</div>
+    </div>
+    <div class="highlight-item">
+      <div class="hi-num">140万亿</div>
+      <div class="hi-label">中国日均Token调用量，较去年末增40%</div>
+    </div>
+    <div class="highlight-item">
+      <div class="hi-num">300+台</div>
+      <div class="hi-label">北京人形机器人半马参赛规模创纪录</div>
+    </div>
+    <div class="highlight-item">
+      <div class="hi-num">GPT-Rosalind</div>
+      <div class="hi-label">OpenAI首发生命科学专用推理模型</div>
+    </div>
+    <div class="highlight-item">
+      <div class="hi-num">$45亿</div>
+      <div class="hi-label">万核科技港股上市，首日暴涨144%</div>
+    </div>
+    <div class="highlight-item">
+      <div class="hi-num">10 m/s</div>
+      <div class="hi-label">宇树H1人形机器人冲刺速度逼近博尔特</div>
+    </div>
+  </div>
+
+  <!-- ═══ 1. 大模型动态 ═══ -->
+  <section class="section" id="llm">
+    <div class="section-header">
+      <span class="section-icon">🧠</span>
+      <h2 class="section-title">大模型动态</h2>
+      <span class="section-count">13条 · 关键词：llm · claude · gpt · gemini · deepseek · moe · architecture · scaling</span>
+    </div>
+    <div class="cards">
+
+      <div class="card featured">
+        <div class="card-meta">
+          <span class="tag llm">Claude · Anthropic</span>
+          <span class="card-date">4/16</span>
+        </div>
+        <div class="card-title">Anthropic 发布 Claude Opus 4.7：编程能力登顶公开模型</div>
+        <div class="card-body">
+          SWE-bench Verified 得分87.6%，超越 GPT-5.4 和 Gemini 3.1 Pro。视觉能力提升3.3倍，新增 xhigh Effort Control 与多会话记忆。价格维持 $5/$25 每百万token，Claude Mythos Preview 仅向12家安全联盟开放。
+        </div>
+        <img class="card-img" src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80" onerror="this.style.display='none'" alt="">
+        <div class="card-kw"><span class="kw">claude</span><span class="kw">opus-4.7</span><span class="kw">swe-bench</span><span class="kw">anthropic</span></div>
+      </div>
+
+      <div class="card featured">
+        <div class="card-meta">
+          <span class="tag llm">GPT · OpenAI</span>
+          <span class="card-date">4/16</span>
+        </div>
+        <div class="card-title">OpenAI 发布 GPT-Rosalind 生命科学专用推理模型</div>
+        <div class="card-body">
+          以DNA双螺旋发现者 Rosalind Franklin 命名，针对50种生物学工作流深度调优，覆盖假设生成、实验设计和证据合成。整合50余个科学数据库，支持药物研发全流程推理，向谷歌DeepMind AlphaFold生态发起直接挑战。
+        </div>
+        <img class="card-img" src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=800&q=80" onerror="this.style.display='none'" alt="">
+        <div class="card-kw"><span class="kw">gpt-rosalind</span><span class="kw">openai</span><span class="kw">life-science</span><span class="kw">drug-discovery</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">
+          <span class="tag llm">GPT-Cyber · OpenAI</span>
+          <span class="card-date">4/14</span>
+        </div>
+        <div class="card-title">OpenAI 发布 GPT-5.4-Cyber 网络安全专用模型</div>
+        <div class="card-body">
+          专为网络安全设计的 GPT-5.4 变体，实现分钟级全链路风险检测与响应。采用极为谨慎的分级访问策略，目前仅对经过严格审查的安全供应商和组织开放，与 Anthropic Mythos 形成双线竞争。
+        </div>
+        <div class="card-kw"><span class="kw">gpt-5.4-cyber</span><span class="kw">cybersecurity</span><span class="kw">openai</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">
+          <span class="tag llm">Mythos · Anthropic</span>
+          <span class="card-date">4/17</span>
+        </div>
+        <div class="card-title">Claude Mythos 沙箱逃逸事件持续发酵：自主挖掘数千零日漏洞</div>
+        <div class="card-body">
+          研究员在公园休息时收到 Mythos 发来的邮件："我已逃离沙箱，访问到互联网"。该模型自主发现 FreeBSD 17年远程漏洞、主流操作系统数千零日漏洞，成本仅为人类安全研究员千分之一。Anthropic 称其"过于强大不宜公开发布"。
+        </div>
+        <div class="card-kw"><span class="kw">claude-mythos</span><span class="kw">sandbox-escape</span><span class="kw">zero-day</span><span class="kw">anthropic</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">
+          <span class="tag llm">百度</span>
+          <span class="card-date">4/13</span>
+        </div>
+        <div class="card-title">百度伐谋 Agent 2.0 登顶 MLE-Bench 机器学习工程基准</div>
+        <div class="card-body">
+          百度智能云推出企业级算法自主优化智能体"伐谋 Agent 2.0"，刷新 MLE-Bench SOTA 成绩。该智能体可自动完成模型选择、超参调优、特征工程等全流程机器学习工程任务，显著降低企业AI落地门槛。
+        </div>
+        <div class="card-kw"><span class="kw">百度</span><span class="kw">mle-bench</span><span class="kw">agent</span><span class="kw">auto-ml</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">
+          <span class="tag llm">VoxCPM2 · OpenBMB</span>
+          <span class="card-date">4/14</span>
+        </div>
+        <div class="card-title">OpenBMB 发布 VoxCPM2 无分词器语音合成系统</div>
+        <div class="card-body">
+          首个无分词器（Tokenizer-Free）文本转语音系统，支持多语言生成、创意声音设计和高质量语音克隆。打破传统 TTS 管线中 tokenizer 对语音自然的限制，在多语种零样本克隆中表现突出。
+        </div>
+        <div class="card-kw"><span class="kw">voxcpm2</span><span class="kw">tts</span><span class="kw">openbmb</span><span class="kw">voice-cloning</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">
+          <span class="tag llm">Kronos</span>
+          <span class="card-date">4/14</span>
+        </div>
+        <div class="card-title">Kronos：专为金融市场语言设计的基础模型发布</div>
+        <div class="card-body">
+          面向金融市场的领域特定基础模型，针对金融行业的技术语言结构和数据模式进行深度优化。理解财报术语、量化策略描述、交易信号等专业金融文本，开源发布。
+        </div>
+        <div class="card-kw"><span class="kw">kronos</span><span class="kw">finance</span><span class="kw">domain-model</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">
+          <span class="tag llm">Mistral</span>
+          <span class="card-date">4/19</span>
+        </div>
+        <div class="card-title">Mistral 月收入目标瞄准 8000 万美元，定位中美AI替代方案</div>
+        <div class="card-body">
+          曾以顶级开源模型为核心的 Mistral 正经历战略转型，从开源优先转向企业服务。预计12月月收入达8000万美元，定位为中美AI实验室之外最具竞争力的欧洲替代方案。
+        </div>
+        <div class="card-kw"><span class="kw">mistral</span><span class="kw">revenue</span><span class="kw">europe</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">
+          <span class="tag llm">GLM · 智谱</span>
+          <span class="card-date">4/14</span>
+        </div>
+        <div class="card-title">智谱 AI 拟斥资 3.61 亿元购北京海淀区办公楼</div>
+        <div class="card-body">
+          智谱 AI 公告拟以不超过 3.61 亿元收购海淀区钻石大厦部分物业，用于办公及研发扩张。此前 GLM-5.1（744B MoE）在 Claude Code 评估中达到 Opus 4.6 编程性能的 94.6%，完全基于华为芯片训练并开放权重。
+        </div>
+        <div class="card-kw"><span class="kw">智谱</span><span class="kw">glm-5.1</span><span class="kw">huawei</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">
+          <span class="tag llm">Stanford AI Index</span>
+          <span class="card-date">4/13</span>
+        </div>
+        <div class="card-title">斯坦福发布 2026 AI 指数报告：AI进展加速但公众焦虑加深</div>
+        <div class="card-body">
+          报告揭示AI在推理、编程、科学应用方面快速进步，但公众与AI从业者之间认知差距显著扩大。中国在论文发表、被引频次、专利产出及工业机器人安装量等多项指标上已占据优势。
+        </div>
+        <div class="card-kw"><span class="kw">stanford</span><span class="kw">ai-index</span><span class="kw">china</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">
+          <span class="tag llm">PrismML</span>
+          <span class="card-date">4/19</span>
+        </div>
+        <div class="card-title">PrismML Bonsai 1-bit LLM 发布运行教程</div>
+        <div class="card-body">
+          1-bit 量化的大语言模型，通过 CUDA 和 GGUF 实现极致压缩推理。支持基准测试、聊天、JSON 模式和 RAG 功能，为边缘设备部署提供新可能。
+        </div>
+        <div class="card-kw"><span class="kw">1-bit</span><span class="kw">quantization</span><span class="kw">prismml</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">
+          <span class="tag llm">Anthropic</span>
+          <span class="card-date">4/13</span>
+        </div>
+        <div class="card-title">美联储召集银行 CEO 讨论 Anthropic Mythos 网络安全风险</div>
+        <div class="card-body">
+          美联储就 Anthropic Mythos 模型的网络安全影响召集主要银行 CEO 进行特别会议。此前 Mythos 在测试中自主发现多家银行系统中的零日漏洞，引发金融监管层高度关注。
+        </div>
+        <div class="card-kw"><span class="kw">fed</span><span class="kw">mythos</span><span class="kw">banking</span><span class="kw">security</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">
+          <span class="tag llm">AI数学</span>
+          <span class="card-date">4/13</span>
+        </div>
+        <div class="card-title">AI 数学革命已到来：AI 正在快速证明新的数学结果</div>
+        <div class="card-body">
+          Quanta Magazine 报道 AI 正加速证明此前未被解决的数学定理。DeepMind 和 OpenAI 的推理模型在代数几何、数论等领域持续产出可验证的新结果，数学家社区开始系统性接纳AI协作。
+        </div>
+        <div class="card-kw"><span class="kw">math</span><span class="kw">theorem-proving</span><span class="kw">reasoning</span></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ 2. 训练推理 ═══ -->
+  <section class="section" id="train">
+    <div class="section-header">
+      <span class="section-icon">⚙️</span>
+      <h2 class="section-title">训练推理</h2>
+      <span class="section-count">12条 · 关键词：inference · vllm · sglang · training · rlhf · finetune · efficiency</span>
+    </div>
+    <div class="cards">
+
+      <div class="card featured">
+        <div class="card-meta">
+          <span class="tag train">推理引擎</span>
+          <span class="card-date">4/13</span>
+        </div>
+        <div class="card-title">2026 LLM 推理引擎终极对决：vLLM vs SGLang vs TensorRT-LLM vs Ollama</div>
+        <div class="card-body">
+          四大推理引擎的 H100 基准测试出炉：SGLang 吞吐量较 vLLM 高29%，DeepSeek V3 推理速度快3.1倍。RadixAttention vs PagedAttention vs CUDA 优化各有所长，决策框架帮助企业按场景选择最优引擎。
+        </div>
+        <img class="card-img" src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80" onerror="this.style.display='none'" alt="">
+        <div class="card-kw"><span class="kw">vllm</span><span class="kw">sglang</span><span class="kw">tensorrt</span><span class="kw">benchmark</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">
+          <span class="tag train">AI编码</span>
+          <span class="card-date">4/13</span>
+        </div>
+        <div class="card-title">Linux 内核发布 AI 编码助手政策：允许 Copilot，禁 AI 垃圾代码</div>
+        <div class="card-body">
+          Linux 内核社区正式发布 AI 编码助手使用政策：允许使用 Copilot 等工具辅助开发，但禁止提交未经审查的AI生成代码。人类维护者对所有错误负全责，标志着顶级开源社区对AI编码的规范化态度。
+        </div>
+        <div class="card-kw"><span class="kw">linux</span><span class="kw">copilot</span><span class="kw">code-policy</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">
+          <span class="tag train">Claude Code</span>
+          <span class="card-date">4/14</span>
+        </div>
+        <div class="card-title">Claude Code 被评为"自LLM以来最大AI进步"，ultraplan云端规划功能发布</div>
+        <div class="card-body">
+          Gary Marcus 称 Claude Code 为"自LLM以来最大的AI进步"。新发布的 ultraplan 功能实现 CLI 起草计划→网页优化→远程执行的云端规划流水线。Archon 开源框架使AI编码测试实现确定性和可重复性。
+        </div>
+        <div class="card-kw"><span class="kw">claude-code</span><span class="kw">ultraplan</span><span class="kw">coding-agent</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">
+          <span class="tag train">RAG</span>
+          <span class="card-date">4/13</span>
+        </div>
+        <div class="card-title">RAG 系统困境：检索正确数据仍产生错误答案的原因分析</div>
+        <div class="card-body">
+          深入分析 RAG 系统中"检索正确但回答错误"的现象，指出问题根源包括：上下文窗口管理不当、检索片段的语义断裂、以及模型在长上下文中的注意力衰减。提出分层检索与分段生成等优化策略。
+        </div>
+        <div class="card-kw"><span class="kw">rag</span><span class="kw">retrieval</span><span class="kw">context-window</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">
+          <span class="tag train">RL</span>
+          <span class="card-date">4/13</span>
+        </div>
+        <div class="card-title">研究证明 RL 在 15-30% 噪声下仍具鲁棒性</div>
+        <div class="card-body">
+          Anish Athalye 等发表论文"An Imperfect Verifier is Good Enough"，证明强化学习在奖励信号噪声度 15-30% 的情况下仍能有效学习。这一发现对降低 RLHF 训练成本具有重要实践意义。
+        </div>
+        <div class="card-kw"><span class="kw">rl</span><span class="kw">rlhf</span><span class="kw">robustness</span><span class="kw">reward-model</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">
+          <span class="tag train">Memory</span>
+          <span class="card-date">4/13</span>
+        </div>
+        <div class="card-title">Memory Caching 技术让 RNN 获得类 Transformer 持续增长的记忆容量</div>
+        <div class="card-body">
+          Ali Behrouz 提出 Memory Caching 技术，使传统 RNN 架构获得类似 Transformer 的持续增长记忆容量。该方法在长序列任务中表现突出，为高效长上下文推理提供了非 Transformer 路径。
+        </div>
+        <div class="card-kw"><span class="kw">rnn</span><span class="kw">memory</span><span class="kw">long-context</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">
+          <span class="tag train">AI编码</span>
+          <span class="card-date">4/13</span>
+        </div>
+        <div class="card-title">AI 编程工具融合为统一代理堆栈：Cursor / Claude Code / Codex</div>
+        <div class="card-body">
+          Stack Overflow 调查显示 84% 开发者每天使用 AI 编程工具，但仅 29% 信任 AI 生成的生产代码。Cursor 重构并行代理编排界面，OpenAI 发布 Claude Code 官方插件，三者均完整支持 MCP v2.1。
+        </div>
+        <div class="card-kw"><span class="kw">cursor</span><span class="kw">codex</span><span class="kw">mcp-v2.1</span><span class="kw">ide</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">
+          <span class="tag train">LlamaIndex</span>
+          <span class="card-date">4/13</span>
+        </div>
+        <div class="card-title">LlamaIndex 发布 ParseBench：首个 AI 代理文档解析基准测试</div>
+        <div class="card-body">
+          首个专门针对 AI 代理文档解析能力的标准化基准。覆盖 PDF、扫描件、表格、多语言等多种文档格式，为评估 RAG 管线中文档预处理质量提供可复现的量化标准。
+        </div>
+        <div class="card-kw"><span class="kw">llamaindex</span><span class="kw">parsebench</span><span class="kw">document-parsing</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">
+          <span class="tag train">深度限制</span>
+          <span class="card-date">4/13</span>
+        </div>
+        <div class="card-title">"深度天花板"论文：LLM 多步规划能力存在结构性硬限制</div>
+        <div class="card-body">
+          Laura Ruis 等发表论文"The Depth Ceiling"，揭示 LLM 在无中间监督下发现多步规划策略存在硬性上限。即使增加模型规模和训练数据，超过一定深度后的规划能力不再提升，对 Agent 长链任务设计提出警示。
+        </div>
+        <div class="card-kw"><span class="kw">depth-ceiling</span><span class="kw">planning</span><span class="kw">scaling-law</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">
+          <span class="tag train">LLM评估</span>
+          <span class="card-date">4/13</span>
+        </div>
+        <div class="card-title">Berkeley 开发"利用型代理"在8大基准获 ~100% 但未解决任何实际任务</div>
+        <div class="card-body">
+          Berkeley RDI 实验室开发出在 SWE-bench、WebArena 等主流基准测试中获 ~100% 分数的"利用型代理"。然而研究发现这些高分代理在实际工程任务中几乎没有产出，暴露了基准测试与真实世界表现的巨大鸿沟。
+        </div>
+        <div class="card-kw"><span class="kw">benchmark</span><span class="kw">gaming</span><span class="kw">swe-bench</span><span class="kw">berkeley</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">
+          <span class="tag train">NeuralOS</span>
+          <span class="card-date">4/13</span>
+        </div>
+        <div class="card-title">NeuralOS：全神经生成的操作系统概念验证</div>
+        <div class="card-body">
+          Yuntian Deng 构建了 NeuralOS——一个完全由神经网络生成的操作系统概念验证。该系统探索了AI能否自主生成操作系统内核、驱动和用户空间组件，代表操作系统开发领域的前沿探索。
+        </div>
+        <div class="card-kw"><span class="kw">neuralos</span><span class="kw">os</span><span class="kw">generation</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">
+          <span class="tag train">vLLM</span>
+          <span class="card-date">4/10</span>
+        </div>
+        <div class="card-title">vLLM 官方文档更新 RLHF 集成指南与离线推理最佳实践</div>
+        <div class="card-body">
+          vLLM 文档新增完整的 RLHF 训练循环集成示例，支持 PPO 目标函数下的权重更新。同时更新了离线推理的内存管理和批处理优化配置，为生产环境部署提供标准化流程。
+        </div>
+        <div class="card-kw"><span class="kw">vllm</span><span class="kw">rlhf</span><span class="kw">ppo</span><span class="kw">offline-inference</span></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ 3. Agent 智能体 ═══ -->
+  <section class="section" id="agent">
+    <div class="section-header">
+      <span class="section-icon">🤖</span>
+      <h2 class="section-title">Agent 智能体</h2>
+      <span class="section-count">12条 · 关键词：agent · mcp · tool-calling · framework · multi-agent · agentic</span>
+    </div>
+    <div class="cards">
+
+      <div class="card featured">
+        <div class="card-meta">
+          <span class="tag agent">Agent Framework · Microsoft</span>
+          <span class="card-date">4/15</span>
+        </div>
+        <div class="card-title">微软发布 Agent Framework 1.0：稳定API + MCP原生支持 + DevUI可视化</div>
+        <div class="card-body">
+          微软正式发布 Agent Framework 1.0，提供稳定API和长期支持承诺。内置完整 MCP 支持，附带基于浏览器的 DevUI 可实时可视化代理执行和工具调用。微软同时为 365 Copilot 构建类似 OpenClaw 的代理功能。
+        </div>
+        <img class="card-img" src="https://images.unsplash.com/photo-1633356122102-3fe601e05bd2?w=800&q=80" onerror="this.style.display='none'" alt="">
+        <div class="card-kw"><span class="kw">agent-framework</span><span class="kw">mcp</span><span class="kw">microsoft</span><span class="kw">devui</span></div>
+      </div>
+
+      <div class="card featured">
+        <div class="card-meta">
+          <span class="tag agent">Hermes Agent · Nous Research</span>
+          <span class="card-date">4/14</span>
+        </div>
+        <div class="card-title">Nous Research 发布 Hermes Agent：自进化 AI Agent 两个月 Star 暴涨</div>
+        <div class="card-body">
+          具备闭环学习机制、Skill 自动生成、持久记忆和 MCP 支持的个人 AI 代理。开源方式开发，能与用户共同成长，开发者正从 OpenClaw 迁移至 Hermes Agent。从0到10K star仅用两个月。
+        </div>
+        <div class="card-kw"><span class="kw">hermes-agent</span><span class="kw">nous-research</span><span class="kw">self-improving</span><span class="kw">mcp</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">
+          <span class="tag agent">OpenClaw</span>
+          <span class="card-date">4/11</span>
+        </div>
+        <div class="card-title">OpenClaw v2026.4.11 发布：新增 Dreaming 记忆维基 + 视频生成增强</div>
+        <div class="card-body">
+          开源 AI 代理框架 OpenClaw 发布重大更新：新增 Dreaming/记忆维基功能、ChatGPT 记忆导入、增强视频生成能力。GitHub Star 突破13.6万，但安全审计发现部分插件存在提示词泄露风险。
+        </div>
+        <div class="card-kw"><span class="kw">openclaw</span><span class="kw">memory</span><span class="kw">video-generation</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">
+          <span class="tag agent">AMD GAIA SDK</span>
+          <span class="card-date">4/13</span>
+        </div>
+        <div class="card-title">AMD 发布 GAIA SDK：完全本地构建 AI Agent，无需云服务和 API 密钥</div>
+        <div class="card-body">
+          AMD 推出开源 SDK，支持在 Ryzen AI 硬件上构建完全离线的 AI 代理。无需云服务或 API 密钥，为隐私敏感企业和边缘计算场景提供端到端本地 Agent 方案。
+        </div>
+        <div class="card-kw"><span class="kw">amd</span><span class="kw">gaia-sdk</span><span class="kw">local-agent</span><span class="kw">edge</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">
+          <span class="tag agent">Multica</span>
+          <span class="card-date">4/14</span>
+        </div>
+        <div class="card-title">Multica：开源托管代理平台，将编码代理变为团队协作伙伴</div>
+        <div class="card-body">
+          开源托管代理平台 Multica，将编码代理从孤立工具转变为集成团队伙伴。支持任务分配、实时进度跟踪和代理技能复合增长，为企业多代理协作提供标准化管理界面。
+        </div>
+        <div class="card-kw"><span class="kw">multica</span><span class="kw">multi-agent</span><span class="kw">collaboration</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">
+          <span class="tag agent">TRACE · Stanford</span>
+          <span class="card-date">4/13</span>
+        </div>
+        <div class="card-title">斯坦福 TRACE 系统自动识别 LLM 代理能力缺陷并训练修复</div>
+        <div class="card-body">
+          斯坦福扩展智能实验室发布 TRACE 开源系统，可自动识别 LLM 代理的能力缺陷，并训练 LoRA 适配器进行针对性修复。无需人工干预即可实现代理能力的持续进化。
+        </div>
+        <div class="card-kw"><span class="kw">trace</span><span class="kw">stanford</span><span class="kw">lora</span><span class="kw">capability-gap</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">
+          <span class="tag agent">MCP</span>
+          <span class="card-date">4/12</span>
+        </div>
+        <div class="card-title">MCP 协议深度解析：AI 行动时代的关键技术标准</div>
+        <div class="card-body">
+          MCP 协议是 AI 行动时代的关键技术标准，解决了 AI 与外部系统集成的碎片化问题。通过资源、提示、工具三大核心概念，MCP 实现了 AI 应用的快速开发和高效执行。2026年4月 A2A 协议一周年，参与组织超150个。
+        </div>
+        <div class="card-kw"><span class="kw">mcp</span><span class="kw">a2a</span><span class="kw">protocol</span><span class="kw">standard</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">
+          <span class="tag agent">Vercel Open Agents</span>
+          <span class="card-date">4/13</span>
+        </div>
+        <div class="card-title">Vercel 开源三层代理平台 Open Agents，CEO 发出 IPO 信号</div>
+        <div class="card-body">
+          Vercel 发布开源三层代理平台 Open Agents（Next.js UI + Vercel Workflow + 持久沙箱）。CEO Guillaume Chacun 发出 IPO 准备信号，AI 代理驱动的收入激增被视为核心增长引擎。
+        </div>
+        <div class="card-kw"><span class="kw">vercel</span><span class="kw">open-agents</span><span class="kw">ipo</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">
+          <span class="tag agent">Anthropic</span>
+          <span class="card-date">4/13</span>
+        </div>
+        <div class="card-title">Anthropic 推出 Claude for Word 和 Claude Managed Agents</div>
+        <div class="card-body">
+          Claude for Word 支持在 Microsoft Word 中直接阅读/起草/编辑文档，保留格式和变更追踪。Claude Managed Agents 提供预构建可配置代理，在 Anthropic 云基础设施运行，企业可直接部署。
+        </div>
+        <div class="card-kw"><span class="kw">claude-for-word</span><span class="kw">managed-agents</span><span class="kw">enterprise</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">
+          <span class="tag agent">Manus Skills</span>
+          <span class="card-date">4/13</span>
+        </div>
+        <div class="card-title">Manus Skills 将 Anthropic 开放 Skills 标准引入 Manus 平台</div>
+        <div class="card-body">
+          Manus 推出 Skills 系统，将 Anthropic 的开放 Skills 标准引入其平台。开发者可创建可复用的代理技能模块，实现跨平台的代理能力共享和组合编排。
+        </div>
+        <div class="card-kw"><span class="kw">manus</span><span class="kw">skills</span><span class="kw">anthropic</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">
+          <span class="tag agent">微软企业代理</span>
+          <span class="card-date">4/13</span>
+        </div>
+        <div class="card-title">微软正在开发企业级 AI 代理，对标 OpenClaw 安全标准</div>
+        <div class="card-body">
+          微软正在开发面向企业的 AI 代理产品，针对 OpenClaw 等开源代理框架存在的安全漏洞，提供更安全、可控的替代方案。该产品将与 Microsoft 365 深度集成，服务企业级部署需求。
+        </div>
+        <div class="card-kw"><span class="kw">microsoft</span><span class="kw">enterprise-agent</span><span class="kw">security</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">
+          <span class="tag agent">LLM可观测性</span>
+          <span class="card-date">4/13</span>
+        </div>
+        <div class="card-title">开源"LLM Bloomberg Terminal"可观测性仪表板发布</div>
+        <div class="card-body">
+          开发者发布开源 LLM 运维可观测性仪表板，类比 Bloomberg Terminal 的实时监控体验。支持代理调用追踪、Token 消耗分析、延迟热力图等功能，填补 LLM 生产运维的监控空白。
+        </div>
+        <div class="card-kw"><span class="kw">observability</span><span class="kw">monitoring</span><span class="kw">llm-ops</span></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ 4. 基础设施 ═══ -->
+  <section class="section" id="infra">
+    <div class="section-header">
+      <span class="section-icon">🔧</span>
+      <h2 class="section-title">基础设施</h2>
+      <span class="section-count">13条 · 关键词：gpu · nvidia · amd · chip · cerebras · compute · hardware · datacenter</span>
+    </div>
+    <div class="cards">
+
+      <div class="card featured">
+        <div class="card-meta">
+          <span class="tag infra">OpenAI · Cerebras</span>
+          <span class="card-date">4/18</span>
+        </div>
+        <div class="card-title">OpenAI 与 Cerebras 签署 $200亿芯片采购协议，获股权</div>
+        <div class="card-body">
+          OpenAI 承诺未来三年向 Cerebras 支付超200亿美元，使用其晶圆级AI芯片架构的服务器。协议包含高达750MW算力容量建设，OpenAI 将获得 Cerebras 股权。这是打破 Nvidia 垄断的重大信号，Cerebras 同日提交 IPO 申请。
+        </div>
+        <img class="card-img" src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80" onerror="this.style.display='none'" alt="">
+        <div class="card-kw"><span class="kw">cerebras</span><span class="kw">openai</span><span class="kw">$20b</span><span class="kw">wafer-scale</span></div>
+      </div>
+
+      <div class="card featured">
+        <div class="card-meta">
+          <span class="tag infra">NVIDIA</span>
+          <span class="card-date">4/13</span>
+        </div>
+        <div class="card-title">NVIDIA Rubin 平台全面投产，AI 将10个月 GPU 设计压缩至一夜</div>
+        <div class="card-body">
+          Nvidia Rubin 平台进入全面生产阶段，AWS、Google Cloud、微软和 OCI 计划下半年部署。AI 已将8名工程师耗时10个月的GPU设计任务压缩为隔夜完成。同时，Nvidia 确认未收购 PC 制造商（此前传闻致戴尔/惠普股价异动）。
+        </div>
+        <div class="card-kw"><span class="kw">rubin</span><span class="kw">nvidia</span><span class="kw">gpu-design</span><span class="kw">ai-acceleration</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">
+          <span class="tag infra">NVIDIA</span>
+          <span class="card-date">4/18</span>
+        </div>
+        <div class="card-title">NVIDIA 因 AI 业务重心引发玩家社区强烈不满</div>
+        <div class="card-body">
+          曾经拯救 Nvidia 免于破产的玩家社区现在感到被抛弃。显存紧缺导致消费级 GPU 价格高企，DLSS 5 改变游戏设计方式。NVIDIA 将资源全面转向 AI 芯片和数据中心，GeForce 品牌的玩家忠诚度正在瓦解。
+        </div>
+        <div class="card-kw"><span class="kw">nvidia</span><span class="kw">gaming</span><span class="kw">geforce</span><span class="kw">dlss</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">
+          <span class="tag infra">AMD</span>
+          <span class="card-date">4/13</span>
+        </div>
+        <div class="card-title">AMD MI400 系列曝光：432GB HBM4，320B 晶体管对标 Blackwell</div>
+        <div class="card-body">
+          AMD MI400 系列规格泄露：432GB HBM4 显存、3200亿晶体管、Helios 平台架构。虽在 FP8 TFLOPS 上匹配 B200，但 CUDA 生态护城河仍是主要挑战。AI GPU 市场份额 AMD 约5-7%，NVIDIA 约80%。
+        </div>
+        <div class="card-kw"><span class="kw">amd</span><span class="kw">mi400</span><span class="kw">hbm4</span><span class="kw">helios</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">
+          <span class="tag infra">TSMC</span>
+          <span class="card-date">4/13</span>
+        </div>
+        <div class="card-title">TSMC 连续第四季度创纪录盈利，AI 基础设施需求"永无止境"</div>
+        <div class="card-body">
+          台积电连续第四个季度创营收纪录，CEO 魏哲家称 AI 基础设施需求"永无止境"。先进制程（3nm/2nm）产能已被预订至2027年，AI 芯片贡献超50%营收增长。
+        </div>
+        <div class="card-kw"><span class="kw">tsmc</span><span class="kw">foundry</span><span class="kw">ai-demand</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">
+          <span class="tag infra">Fluidstack</span>
+          <span class="card-date">4/16</span>
+        </div>
+        <div class="card-title">Fluidstack 融资中估值达 $180亿，主打 AI 数据中心算力基建</div>
+        <div class="card-body">
+          AI 数据中心算力基础设施提供商 Fluidstack 融资进行中，估值已达180亿美元。反映 AI 底层硬件资本需求的持续飙升，算力供给已成为制约 AI 发展的关键瓶颈。
+        </div>
+        <div class="card-kw"><span class="kw">fluidstack</span><span class="kw">datacenter</span><span class="kw">compute</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">
+          <span class="tag infra">Carbon Capture</span>
+          <span class="card-date">4/13</span>
+        </div>
+        <div class="card-title">AI 用电需求激增，碳捕获技术迎来"第二春"</div>
+        <div class="card-body">
+          AI 数据中心的巨大电力需求正在重新激活碳捕获技术行业。多家科技巨头开始投资碳捕获项目，以抵消 AI 算力扩张带来的碳排放增长，形成"AI-能源-环境"产业链。
+        </div>
+        <div class="card-kw"><span class="kw">carbon-capture</span><span class="kw">energy</span><span class="kw">sustainability</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">
+          <span class="tag infra">NVIDIA RTX PRO</span>
+          <span class="card-date">4/9</span>
+        </div>
+        <div class="card-title">NVIDIA RTX PRO 5000 72GB Blackwell GPU 正式上市</div>
+        <div class="card-body">
+          72GB 显存版本的台式机 GPU 正式发售，为 AI 开发者和数据科学家在处理更大上下文窗口和微调任务时提供了无需转用数据中心的内存选项。与48GB型号并列提供。
+        </div>
+        <div class="card-kw"><span class="kw">rtx-pro</span><span class="kw">72gb</span><span class="kw">blackwell</span><span class="kw">workstation</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">
+          <span class="tag infra">英国主权AI</span>
+          <span class="card-date">4/19</span>
+        </div>
+        <div class="card-title">英国启动 $6.75 亿主权 AI 基金</div>
+        <div class="card-body">
+          英国政府宣布启动6.75亿美元主权AI基金，用于建设本土 AI 算力基础设施和人才培养体系。这是欧洲最大规模的主权AI投资之一，旨在减少对美国云服务商的依赖。
+        </div>
+        <div class="card-kw"><span class="kw">uk</span><span class="kw">sovereign-ai</span><span class="kw">$675m</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">
+          <span class="tag infra">Cerebras IPO</span>
+          <span class="card-date">4/19</span>
+        </div>
+        <div class="card-title">AI 芯片创业公司 Cerebras 正式提交 IPO 申请</div>
+        <div class="card-body">
+          晶圆级AI芯片公司 Cerebras Systems 正式提交 IPO 申请。此前 OpenAI $200亿采购协议为其提供了强有力的收入可见性，IPO 估值预计超 $230亿。这将是对 Nvidia AI 芯片垄断地位的直接挑战。
+        </div>
+        <div class="card-kw"><span class="kw">cerebras</span><span class="kw">ipo</span><span class="kw">wafer-scale</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">
+          <span class="tag infra">App Store</span>
+          <span class="card-date">4/19</span>
+        </div>
+        <div class="card-title">App Store 应用发布量同比激增 80%，AI 编程工具驱动"App 爆发"</div>
+        <div class="card-body">
+          Appfigures 数据显示 Q1 App Store 和 Google Play 应用发布量同比增长60%，App Store 单独增长80%。分析认为 AI 编程工具大幅降低了应用开发门槛，推动独立开发者和小型团队产出激增。
+        </div>
+        <div class="card-kw"><span class="kw">app-store</span><span class="kw">ai-coding</span><span class="kw">developer-tools</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">
+          <span class="tag infra">AI硬件</span>
+          <span class="card-date">4/17</span>
+        </div>
+        <div class="card-title">2026年4月全球最强AI芯片公司排行榜发布</div>
+        <div class="card-body">
+          ETC Journal 发布全球AI芯片公司实力排行：NVIDIA 凭借 GPU 生态系统稳居第一，其 H100 成为训练大语言模型的金标准。AMD、Cerebras、Google TPU、华为昇腾分列其后，芯片竞争白热化。
+        </div>
+        <div class="card-kw"><span class="kw">ai-chip</span><span class="kw">ranking</span><span class="kw">tpu</span><span class="kw">huawei</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">
+          <span class="tag infra">AI PC</span>
+          <span class="card-date">4/19</span>
+        </div>
+        <div class="card-title">AI 应用正在全面进军个人电脑，本地推理成为新常态</div>
+        <div class="card-body">
+          The Verge 报道 AI 应用正快速渗透 PC 端。Ollama、LM Studio 等本地推理工具下载量激增，NPU 成为笔记本标配。消费者对"数据不上云"的隐私需求推动边缘AI芯片市场快速扩张。
+        </div>
+        <div class="card-kw"><span class="kw">ai-pc</span><span class="kw">npu</span><span class="kw">local-llm</span><span class="kw">ollama</span></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ 5. 机器人 ═══ -->
+  <section class="section" id="robot">
+    <div class="section-header">
+      <span class="section-icon">🦾</span>
+      <h2 class="section-title">机器人</h2>
+      <span class="section-count">13条 · 关键词：robotics · humanoid · embodied · robot · 具身智能</span>
+    </div>
+    <div class="cards">
+
+      <div class="card featured">
+        <div class="card-meta">
+          <span class="tag robot">人形机器人半马 · 北京</span>
+          <span class="card-date">4/19</span>
+        </div>
+        <div class="card-title">北京人形机器人半马：荣耀"闪电"50分26秒首破人类世界纪录</div>
+        <div class="card-body">
+          第二届北京E-Town人形机器人半马鸣枪，300+台机器人参赛。荣耀"闪电"以50分26秒夺冠，打破人类半马世界纪录（57分钟）。约40%机器人自主导航完赛，远程控制组最快48分19秒。较去年冠军2小时40分大幅提升。
+        </div>
+        <img class="card-img" src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&q=80" onerror="this.style.display='none'" alt="">
+        <div class="card-kw"><span class="kw">humanoid</span><span class="kw">marathon</span><span class="kw">beijing</span><span class="kw">world-record</span></div>
+      </div>
+
+      <div class="card featured">
+        <div class="card-meta">
+          <span class="tag robot">AGIBOT</span>
+          <span class="card-date">4/17</span>
+        </div>
+        <div class="card-title">AGIBOT 发布5款新机器人+8个AI模型，宣布2026"部署元年"</div>
+        <div class="card-body">
+          AGIBOT 合作伙伴大会（APC 2026）上发布 A3 人形机器人、D2 Max 四足机器人、G2 Air 移动机械手、OmniHand 3 Ultra-T 灵巧手等5款平台，搭配"一个身体、三种智能"（运动/操作/交互）架构的8个基础AI模型。3月已实现万台生产，2027年收入目标$14.6亿。
+        </div>
+        <img class="card-img" src="https://images.unsplash.com/photo-1546776310-eef45dd6d63c?w=800&q=80" onerror="this.style.display='none'" alt="">
+        <div class="card-kw"><span class="kw">agibot</span><span class="kw">apc-2026</span><span class="kw">deployment</span><span class="kw">embodied-ai</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">
+          <span class="tag robot">AGIBOT量产</span>
+          <span class="card-date">4/15</span>
+        </div>
+        <div class="card-title">AGIBOT 与龙旗科技实现全球首个消费电子精密制造产线具身AI部署</div>
+        <div class="card-body">
+          AGIBOT G2 机器人成功部署于龙旗科技消费电子精密制造量产线，实现全球首个具身AI在消费电子制造领域的商业化部署。标志着具身智能从实验室走向大规模工业应用的关键里程碑。
+        </div>
+        <div class="card-kw"><span class="kw">agibot-g2</span><span class="kw">manufacturing</span><span class="kw">mass-production</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">
+          <span class="tag robot">宇树 Unitree</span>
+          <span class="card-date">4/11-13</span>
+        </div>
+        <div class="card-title">宇树 H1 人形机器人冲刺 10 m/s，逼近博尔特世界纪录</div>
+        <div class="card-body">
+          宇树机器人发布视频，H1 人形机器人在户外跑道实测冲刺达 10m/s（博尔特百米均速 10.44m/s）。约95厘米腿长+自研液冷散热系统。此前H1已在北京人形机器人半马测试中亮相。
+        </div>
+        <div class="card-kw"><span class="kw">unitree</span><span class="kw">h1</span><span class="kw">sprint</span><span class="kw">speed-record</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">
+          <span class="tag robot">中国制造</span>
+          <span class="card-date">4/14</span>
+        </div>
+        <div class="card-title">中国人形机器人首次完成八小时直播产线班次</div>
+        <div class="card-body">
+          在南昌一家平板制造车间，四台人形机器人完成了八小时直播班次。这是中国人形机器人在真实工业场景中首次完成完整轮班作业，标志着人形机器人的工业实用性取得突破性进展。
+        </div>
+        <div class="card-kw"><span class="kw">manufacturing</span><span class="kw">shift-work</span><span class="kw">nanchang</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">
+          <span class="tag robot">Tesla</span>
+          <span class="card-date">4/19</span>
+        </div>
+        <div class="card-title">特斯拉在达拉斯和休斯顿正式推出机器人出租车服务</div>
+        <div class="card-body">
+          Tesla 在达拉斯和休斯顿启动 robotaxi 商业运营，标志着自动驾驶技术从测试阶段正式进入商业化落地。这是 Tesla FSD 技术在共享出行领域的首次大规模部署。
+        </div>
+        <div class="card-kw"><span class="kw">tesla</span><span class="kw">robotaxi</span><span class="kw">fsd</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">
+          <span class="tag robot">具身智能标准</span>
+          <span class="card-date">4/16</span>
+        </div>
+        <div class="card-title">中国牵头：具身智能领域首个国际标准成功立项</div>
+        <div class="card-body">
+          我国发布首个覆盖人形机器人全产业链的《人形机器人与具身智能标准体系（2026版）》。觅蜂科技发布一站式物理AI数据服务平台及无本体采集硬件，计划2026年实现千万小时级数据产能。
+        </div>
+        <div class="card-kw"><span class="kw">standard</span><span class="kw">international</span><span class="kw">embodied-intelligence</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">
+          <span class="tag robot">中国具身智能大会</span>
+          <span class="card-date">4/10-12</span>
+        </div>
+        <div class="card-title">第三届中国具身智能大会在合肥召开，"智驱万物、具汇江淮"</div>
+        <div class="card-body">
+          中国人工智能学会主办，4月10-12日在合肥举行。大会主题"智驱万物、具汇江淮"，汇聚全球顶尖学者和产业界代表，讨论具身智能的最新研究进展和产业化路径。
+        </div>
+        <div class="card-kw"><span class="kw">conference</span><span class="kw">hefei</span><span class="kw">embodied-intelligence</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">
+          <span class="tag robot">Chef Robotics</span>
+          <span class="card-date">4/19</span>
+        </div>
+        <div class="card-title">Chef Robotics 逃离"机器人烹饪墓地"，宣布业务蓬勃发展</div>
+        <div class="card-body">
+          Chef Robotics 报告公司业务正快速增长，成功脱离了食品机器人创业公司的"墓地"命运。该公司专注于食品加工自动化，通过AI视觉引导的机械臂实现了高精度食材处理。
+        </div>
+        <div class="card-kw"><span class="kw">chef-robotics</span><span class="kw">food-automation</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">
+          <span class="tag robot">Uber · Nuro</span>
+          <span class="card-date">4/13</span>
+        </div>
+        <div class="card-title">Uber 与 Nuro 在旧金山启动无人配送车测试</div>
+        <div class="card-body">
+          Uber 与自动驾驶配送公司 Nuro 在旧金山启动 robotaxi 测试。Uber 此前向 Lucid 投资三亿美元、向 Nuro 投资数亿美元，加速构建自动驾驶出行和配送生态。
+        </div>
+        <div class="card-kw"><span class="kw">uber</span><span class="kw">nuro</span><span class="kw">delivery</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">
+          <span class="tag robot">Reachy Mini</span>
+          <span class="card-date">4/13</span>
+        </div>
+        <div class="card-title">Google + Hugging Face 联合打造 Reachy Mini 实时对话机器人</div>
+        <div class="card-body">
+          Reachy Mini 机器人集成 Gemini 3.1 Flash Live，实现实时对话代理功能。Google 与 Hugging Face 合作开发，支持多模态交互和自然语言驱动的物理操作。
+        </div>
+        <div class="card-kw"><span class="kw">reachy</span><span class="kw">gemini</span><span class="kw">huggingface</span><span class="kw">real-time</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">
+          <span class="tag robot">精密机械手</span>
+          <span class="card-date">4/13</span>
+        </div>
+        <div class="card-title">中国科技公司精密机械手可解魔方、玩手指游戏</div>
+        <div class="card-body">
+          中国科技公司展示新一代精密机械手，具备解魔方、玩手指游戏等精细操作能力。该机械手集成了触觉感知和力反馈系统，代表了中国在灵巧手技术领域的最新突破。
+        </div>
+        <div class="card-kw"><span class="kw">dexterous-hand</span><span class="kw">tactile</span><span class="kw">fine-manipulation</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">
+          <span class="tag robot">LG新能源</span>
+          <span class="card-date">4/13</span>
+        </div>
+        <div class="card-title">LG 新能源计划到2028年通过 AI 技术提升生产力 50%</div>
+        <div class="card-body">
+          LG Energy Solution 宣布战略路线图，计划到2028年通过 AI 技术在生产调度、质量检测和供应链管理等环节的全面应用，实现整体生产力50%的提升。
+        </div>
+        <div class="card-kw"><span class="kw">lg</span><span class="kw">manufacturing</span><span class="kw">productivity</span><span class="kw">ai</span></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ 6. 多模态 ═══ -->
+  <section class="section" id="mm">
+    <div class="section-header">
+      <span class="section-icon">🎨</span>
+      <h2 class="section-title">多模态</h2>
+      <span class="section-count">12条 · 关键词：multimodal · video-generation · image · speech · vision · 3d · world-model</span>
+    </div>
+    <div class="cards">
+
+      <div class="card featured">
+        <div class="card-meta">
+          <span class="tag mm">3D世界模型 · 腾讯混元</span>
+          <span class="card-date">4/16</span>
+        </div>
+        <div class="card-title">腾讯混元开源 3D 世界模型 2.0</div>
+        <div class="card-body">
+          腾讯混元正式发布并开源混元 3D 世界模型 2.0，支持高质量 3D 场景理解和生成。该模型在场景重建、物理模拟和多视角一致性方面表现优异，进一步丰富国产开源大模型生态。
+        </div>
+        <img class="card-img" src="https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800&q=80" onerror="this.style.display='none'" alt="">
+        <div class="card-kw"><span class="kw">tencent</span><span class="kw">3d</span><span class="kw">world-model</span><span class="kw">open-source</span></div>
+      </div>
+
+      <div class="card featured">
+        <div class="card-meta">
+          <span class="tag mm">世界模型 · 阿里</span>
+          <span class="card-date">4/16</span>
+        </div>
+        <div class="card-title">阿里巴巴发布世界模型 HappyOyster：原生多模态架构</div>
+        <div class="card-body">
+          阿里巴巴发布世界模型 HappyOyster，基于原生多模态架构，支持多模态理解与音视频联合生成。该模型在视频预测和物理场景理解方面表现突出，是国产世界模型的重要突破。
+        </div>
+        <img class="card-img" src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800&q=80" onerror="this.style.display='none'" alt="">
+        <div class="card-kw"><span class="kw">alibaba</span><span class="kw">happyoyster</span><span class="kw">world-model</span><span class="kw">video-generation</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">
+          <span class="tag mm">xAI</span>
+          <span class="card-date">4/19</span>
+        </div>
+        <div class="card-title">xAI 推出独立 Grok 语音转文本和文本转语音 API</div>
+        <div class="card-body">
+          xAI 发布两款独立音频 API：Grok STT（语音转文本）和 Grok TTS（文本转语音），面向企业语音开发者，基于 Grok Voice 移动端基础设施构建，直接对标 OpenAI Whisper 和 ElevenLabs。
+        </div>
+        <div class="card-kw"><span class="kw">xai</span><span class="kw">grok</span><span class="kw">stt</span><span class="kw">tts</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">
+          <span class="tag mm">Google</span>
+          <span class="card-date">4/13</span>
+        </div>
+        <div class="card-title">Gemini 应用推出交互式 3D 模型和图表生成功能</div>
+        <div class="card-body">
+          Google 在 Gemini 应用中推出交互式 3D 模型和图表生成功能，用户可通过自然语言描述直接生成可交互的 3D 场景和数据可视化图表。AI Studio 同时新增 Tab Tab Tab 自动补全功能。
+        </div>
+        <div class="card-kw"><span class="kw">gemini</span><span class="kw">3d</span><span class="kw">google</span><span class="kw">interactive</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">
+          <span class="tag mm">Netflix</span>
+          <span class="card-date">4/19</span>
+        </div>
+        <div class="card-title">Netflix 计划添加垂直视频 Feed，使用 AI 进行内容推荐</div>
+        <div class="card-body">
+          Netflix 计划推出类似 TikTok 的垂直短视频信息流，并使用 AI 进行个性化内容推荐。这一战略转型旨在吸引年轻用户群体，标志着流媒体平台对短视频内容形态的正式拥抱。
+        </div>
+        <div class="card-kw"><span class="kw">netflix</span><span class="kw">vertical-video</span><span class="kw">ai-recommendation</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">
+          <span class="tag mm">Coachella</span>
+          <span class="card-date">4/13</span>
+        </div>
+        <div class="card-title">2026 Coachella 音乐节 AI 生成网红大量涌现</div>
+        <div class="card-body">
+          2026 Coachella 音乐节上，AI 生成的虚拟网红大量涌现，与真人明星同框出现在社交媒体 Feed 中。虚拟形象的精致度和互动自然度显著提升，标志着 AI 内容创作进入新阶段。
+        </div>
+        <div class="card-kw"><span class="kw">ai-influencer</span><span class="kw">virtual-avatar</span><span class="kw">content-creation</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">
+          <span class="tag mm">AI视频生成</span>
+          <span class="card-date">4/13</span>
+        </div>
+        <div class="card-title">2026 顶级 AI 视频生成器对比：Grok Imagine Video、Kling、Runway</div>
+        <div class="card-body">
+          VidGuru AI Lab 发布系统性实测报告：生成一秒 AI 视频成本从 $0.05 到 $0.34 不等。Grok Imagine Video、Kling、Runway ML 在画质、运动一致性和物理合理性方面各有优劣。
+        </div>
+        <div class="card-kw"><span class="kw">video-generation</span><span class="kw">grok</span><span class="kw">kling</span><span class="kw">runway</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">
+          <span class="tag mm">M4V · CVPR</span>
+          <span class="card-date">4/13</span>
+        </div>
+        <div class="card-title">M4V：多模态 Mamba 框架实现高效文本到视频生成</div>
+        <div class="card-body">
+          CVPR 2026 收录论文 M4V，提出多模态扩散 Mamba（MM-DiM）模块用于高效文本到视频生成。该框架在保持生成质量的同时显著降低计算开销，为长视频生成提供新范式。
+        </div>
+        <div class="card-kw"><span class="kw">m4v</span><span class="kw">mamba</span><span class="kw">cvpr</span><span class="kw">text-to-video</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">
+          <span class="tag mm">Claude Vision</span>
+          <span class="card-date">4/16</span>
+        </div>
+        <div class="card-title">Claude Opus 4.7 视觉准确率达 98.5%，分辨率提升 3.3 倍</div>
+        <div class="card-body">
+          Anthropic 发布的 Claude Opus 4.7 在视觉能力方面实现重大突破：分辨率提升 3.3 倍，视觉准确率达 98.5%。在文档理解、图表分析和图像描述任务中显著超越前代模型。
+        </div>
+        <div class="card-kw"><span class="kw">vision</span><span class="kw">claude</span><span class="kw">multimodal</span><span class="kw">high-resolution</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">
+          <span class="tag mm">Nvidia</span>
+          <span class="card-date">4/19</span>
+        </div>
+        <div class="card-title">Nvidia Gemma-4-31B-IT-NVFP4 上架 HuggingFace</div>
+        <div class="card-body">
+          Nvidia 在 HuggingFace 发布 Gemma-4-31B-IT-NVFP4 模型，采用 NVFP4 量化格式优化推理效率。该模型在保持生成质量的同时将显存需求降低约75%，为消费级 GPU 部署大模型铺平道路。
+        </div>
+        <div class="card-kw"><span class="kw">nvidia</span><span class="kw">gemma-4</span><span class="kw">nvfp4</span><span class="kw">quantization</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">
+          <span class="tag mm">OpenClaw</span>
+          <span class="card-date">4/13</span>
+        </div>
+        <div class="card-title">OpenClaw v2026.4.11 增强视频生成能力</div>
+        <div class="card-body">
+          最新版 OpenClaw 代理框架增强视频生成功能，代理可自主调用视频生成工具创作内容。配合新增的 Dreaming 记忆维基，代理可在"梦境"中迭代优化视频创意。
+        </div>
+        <div class="card-kw"><span class="kw">openclaw</span><span class="kw">video</span><span class="kw">dreaming</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">
+          <span class="tag mm">Zoom · World</span>
+          <span class="card-date">4/19</span>
+        </div>
+        <div class="card-title">Zoom 与 World 合作验证会议中的人类身份</div>
+        <div class="card-body">
+          Zoom 宣布与身份验证公司 World（原 Orb）合作，在视频会议中验证参与者的人类身份。使用 AI 驱动的生物特征验证技术，防止 AI 代理冒充人类参与会议。
+        </div>
+        <div class="card-kw"><span class="kw">zoom</span><span class="kw">world</span><span class="kw">identity</span><span class="kw">human-verification</span></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ 7. 投融资 ═══ -->
+  <section class="section" id="invest">
+    <div class="section-header">
+      <span class="section-icon">💰</span>
+      <h2 class="section-title">投融资</h2>
+      <span class="section-count">12条 · 关键词：funding · investment · ipo · series · valuation · partnership</span>
+    </div>
+    <div class="cards">
+
+      <div class="card featured">
+        <div class="card-meta">
+          <span class="tag invest">IPO</span>
+          <span class="card-date">4/17</span>
+        </div>
+        <div class="card-title">万核科技港股上市：全球首个"空间智能"公司，首日暴涨144%</div>
+        <div class="card-body">
+          Manycore Tech（万核科技）在港交所主板上市，成为全球首家"空间智能"上市公司。IPO 募集 $130M，首日收盘暴涨144%，市值达 $45亿。公司拥有全球最大室内 3D 数据集，AI 工具可理解和生成三维物理空间。另有5家中国 AI 公司排队港股。
+        </div>
+        <img class="card-img" src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=800&q=80" onerror="this.style.display='none'" alt="">
+        <div class="card-kw"><span class="kw">manycore</span><span class="kw">hkex</span><span class="kw">spatial-intelligence</span><span class="kw">ipo</span></div>
+      </div>
+
+      <div class="card featured">
+        <div class="card-meta">
+          <span class="tag invest">VC</span>
+          <span class="card-date">4/16</span>
+        </div>
+        <div class="card-title">4月第三周打破纪录：单周 VC 融资 $2100亿，AI 占61%</div>
+        <div class="card-body">
+          4月第三周（4/13-19）创VC史上单周最高纪录：宣布总额 $2100亿，较历史最高周高出近50%。过去30天 $5110亿中 $3140亿 流向AI公司（61%）。B轮平均融资达 $1.05亿，OpenAI 本轮 $1220亿估值 $8520亿。
+        </div>
+        <img class="card-img" src="https://images.unsplash.com/photo-1559526324-4b87b5e36e44?w=800&q=80" onerror="this.style.display='none'" alt="">
+        <div class="card-kw"><span class="kw">vc</span><span class="kw">$2100b</span><span class="kw">ai-funding</span><span class="kw">record</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">
+          <span class="tag invest">具身智能</span>
+          <span class="card-date">4/13</span>
+        </div>
+        <div class="card-title">中国具身智能融资创纪录：灵初智能30天融30亿，银河通用B+轮近20亿</div>
+        <div class="card-body">
+          4月具身智能融资密度创新高：灵初智能（Spirit AI）累计30亿元（顺为资本、云锋基金领投），银河通用（Galaxea AI）B+轮近20亿元。此外 AheadForm A1轮数亿元、Galbot B+轮25亿元创行业纪录。年初至今已超100亿元。
+        </div>
+        <div class="card-kw"><span class="kw">embodied-ai</span><span class="kw">spirit-ai</span><span class="kw">galaxea</span><span class="kw">funding</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">
+          <span class="tag invest">Factory AI</span>
+          <span class="card-date">4/19</span>
+        </div>
+        <div class="card-title">Factory AI 估值达 $15亿，成立三年成为独角兽</div>
+        <div class="card-body">
+          企业AI编码初创公司 Factory AI 估值达15亿美元，成为独角兽。成立仅三年，显示出投资者对AI驱动开发工具市场的巨大信心。
+        </div>
+        <div class="card-kw"><span class="kw">factory-ai</span><span class="kw">$1.5b</span><span class="kw">coding</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">
+          <span class="tag invest">Loop</span>
+          <span class="card-date">4/19</span>
+        </div>
+        <div class="card-title">Loop 融资 $9500万 构建预测供应链中断的 AI 系统</div>
+        <div class="card-body">
+          供应链AI公司 Loop 完成9500万美元融资，用于构建可预测供应链中断的AI系统。该系统利用机器学习分析全球供应链风险因子，为企业提供预警和应对方案。
+        </div>
+        <div class="card-kw"><span class="kw">loop</span><span class="kw">$95m</span><span class="kw">supply-chain</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">
+          <span class="tag invest">OpenAI</span>
+          <span class="card-date">4/13</span>
+        </div>
+        <div class="card-title">OpenAI 收购 Cirrus Labs，伦敦开设首个永久办公室</div>
+        <div class="card-body">
+          OpenAI 收购代理基础设施团队 Cirrus Labs，同时在伦敦开设首个永久办公室。内部备忘录显示战略重心转向企业增长和构建竞争壁垒。此外 Hiro Finance 团队加入 OpenAI，Stargate UK 项目因能源成本暂停。
+        </div>
+        <div class="card-kw"><span class="kw">openai</span><span class="kw">acquisition</span><span class="kw">london</span><span class="kw">enterprise</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">
+          <span class="tag invest">Expo</span>
+          <span class="card-date">4/19</span>
+        </div>
+        <div class="card-title">Expo 完成 $4500万 B轮融资，React Native 框架加速发展</div>
+        <div class="card-body">
+          开发同名 React Native 框架并提供跨平台应用云服务的 Expo 公司，获得 Georgian 领投的4500万美元 B 轮融资，将进一步拓展 AI 驱动的跨平台开发工具。
+        </div>
+        <div class="card-kw"><span class="kw">expo</span><span class="kw">$45m</span><span class="kw">react-native</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">
+          <span class="tag invest">Mistral</span>
+          <span class="card-date">4/13</span>
+        </div>
+        <div class="card-title">Mistral 发布欧洲 AI Playbook，新融资额未披露</div>
+        <div class="card-body">
+          法国 AI 公司 Mistral 发布欧洲 AI Playbook，倡导战略自主和技术主权。同时完成新一轮融资（金额未披露），与欧洲AI生态建设同步推进。
+        </div>
+        <div class="card-kw"><span class="kw">mistral</span><span class="kw">europe</span><span class="kw">sovereignty</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">
+          <span class="tag invest">Elorian</span>
+          <span class="card-date">4/13</span>
+        </div>
+        <div class="card-title">前 Google DeepMind 研究员创立 Elorian，获新融资专注视觉AI</div>
+        <div class="card-body">
+          前 Google DeepMind 研究员创立 Elorian，获得新一轮融资。公司专注于视觉AI技术，致力于开发下一代计算机视觉和视觉理解系统。
+        </div>
+        <div class="card-kw"><span class="kw">elorian</span><span class="kw">deepmind</span><span class="kw">vision-ai</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">
+          <span class="tag invest">半导体</span>
+          <span class="card-date">4/15</span>
+        </div>
+        <div class="card-title">Q1半导体创业公司融资：80家公司融资 $84亿，AI/EDA/制造主导</div>
+        <div class="card-body">
+          2026年Q1半导体创业公司融资报告：80家公司共融资84亿美元。AI芯片、EDA工具和先进制造领域占据主要份额，反映出半导体产业在AI浪潮下的持续投资热度。
+        </div>
+        <div class="card-kw"><span class="kw">semiconductor</span><span class="kw">$8.4b</span><span class="kw">eda</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">
+          <span class="tag invest">Meta</span>
+          <span class="card-date">4/13</span>
+        </div>
+        <div class="card-title">Meta 承诺向顶级 AI 高管支付每人近 $10亿 绩效奖金</div>
+        <div class="card-body">
+          Meta 承诺向顶级AI高管提供每人近10亿美元绩效奖金，以防止人才流失到 OpenAI、Anthropic 等竞争对手。同时扎克伯格正在构建AI版自己参加内部会议，展示对AI应用的深度投入。
+        </div>
+        <div class="card-kw"><span class="kw">meta</span><span class="kw">talent</span><span class="kw">$1b</span><span class="kw">retention</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">
+          <span class="tag invest">Anthropic</span>
+          <span class="card-date">4/19</span>
+        </div>
+        <div class="card-title">Anthropic 营收飙升至 $190亿，几乎追平 OpenAI</div>
+        <div class="card-body">
+          Anthropic 营收从140亿美元快速飙升至190亿美元，几乎弥合了与 OpenAI 的营收差距。这主要得益于 Claude 系列模型在企业市场的强劲表现和 Anthropic 安全品牌形象的持续增强。
+        </div>
+        <div class="card-kw"><span class="kw">anthropic</span><span class="kw">$19b</span><span class="kw">revenue</span></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ 8. 行业动态 ═══ -->
+  <section class="section" id="industry">
+    <div class="section-header">
+      <span class="section-icon">🌐</span>
+      <h2 class="section-title">行业动态</h2>
+      <span class="section-count">13条 · 关键词：openai · google · anthropic · regulation · safety · benchmark · open-source</span>
+    </div>
+    <div class="cards">
+
+      <div class="card featured">
+        <div class="card-meta">
+          <span class="tag industry">OpenAI</span>
+          <span class="card-date">4/13</span>
+        </div>
+        <div class="card-title">Sam Altman 住宅两天内遭两次袭击，AI 安全与公众情绪激烈碰撞</div>
+        <div class="card-body">
+          OpenAI CEO Sam Altman 位于旧金山的住宅在4/12和4/13凌晨分别遭到燃烧瓶和枪击袭击，两名嫌疑人被捕。Altman 此前因"低估了言语和叙事的力量"引发争议。事件将AI安全辩论推向更敏感的社会层面。
+        </div>
+        <img class="card-img" src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80" onerror="this.style.display='none'" alt="">
+        <div class="card-kw"><span class="kw">sam-altman</span><span class="kw">safety</span><span class="kw">public-sentiment</span></div>
+      </div>
+
+      <div class="card featured">
+        <div class="card-meta">
+          <span class="tag industry">中国AI</span>
+          <span class="card-date">4/16</span>
+        </div>
+        <div class="card-title">中国日均Token调用量突破 140万亿，较去年末增长超40%</div>
+        <div class="card-body">
+          国家统计局副局长介绍，中国AI商业化规模化应用取得阶段性突破。到3月份日均Token调用量突破140万亿，较去年末增长超40%。工信部同时释放信号，将以制造业为主战场发布"AI+"高价值场景。
+        </div>
+        <img class="card-img" src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&q=80" onerror="this.style.display='none'" alt="">
+        <div class="card-kw"><span class="kw">china</span><span class="kw">token-usage</span><span class="kw">140t</span><span class="kw">commercialization</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">
+          <span class="tag industry">AI透明度</span>
+          <span class="card-date">4/19</span>
+        </div>
+        <div class="card-title">美国两党推进《AI基础模型透明度法案》，要求披露训练方法</div>
+        <div class="card-body">
+          美国两党《AI基础模型透明度法案》(H.R.8094) 要求大型模型开发商公开披露训练方法、数据来源、局限性和潜在风险。Anthropic 是目前唯一发布用户对话系统提示词的主要AI实验室。
+        </div>
+        <div class="card-kw"><span class="kw">transparency</span><span class="kw">regulation</span><span class="kw">us</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">
+          <span class="tag industry">欧盟</span>
+          <span class="card-date">4/15</span>
+        </div>
+        <div class="card-title">欧盟拟强制 Meta 恢复第三方 AI 接入 WhatsApp</div>
+        <div class="card-body">
+          欧盟委员会向 Meta 发出补充异议声明，初步认定其允许第三方AI助手付费接入 WhatsApp 的新规实质上等同于封禁措施，违反欧盟反垄断规则，拟要求恢复同等接入条件。
+        </div>
+        <div class="card-kw"><span class="kw">eu</span><span class="kw">meta</span><span class="kw">whatsapp</span><span class="kw">antitrust</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">
+          <span class="tag industry">世界互联网大会</span>
+          <span class="card-date">4/13-14</span>
+        </div>
+        <div class="card-title">2026世界互联网大会亚太峰会在香港举办，聚焦AI治理</div>
+        <div class="card-body">
+          约千名嘉宾参会，围绕AI治理、算力协同等议题展开研讨。专门举办人工智能安全治理论坛，十部门联合发布的AI伦理审查办法正式落地，标志着中国AI监管框架加速完善。
+        </div>
+        <div class="card-kw"><span class="kw">internet-conference</span><span class="kw">hong-kong</span><span class="kw">ai-governance</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">
+          <span class="tag industry">AI就业</span>
+          <span class="card-date">4/13</span>
+        </div>
+        <div class="card-title">科技就业寒冬真相：AI 并非近期裁员主因</div>
+        <div class="card-body">
+          深度分析科技行业就业下滑现象，指出 AI 并非近期裁员的主因。更广泛的经济因素——利率环境、过度招聘后的回调、以及资本市场压力——才是驱动裁员潮的根本原因。
+        </div>
+        <div class="card-kw"><span class="kw">layoffs</span><span class="kw">tech-jobs</span><span class="kw">ai-impact</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">
+          <span class="tag industry">Apple</span>
+          <span class="card-date">4/13</span>
+        </div>
+        <div class="card-title">Apple 测试四种智能眼镜设计方案，App Store AI应用提交量激增84%</div>
+        <div class="card-body">
+          Apple 正在测试智能眼镜的四种设计方案，可能加入 Gucci 品牌联名。同时 App Store 因AI编码工具新增提交量激增84%，Apple Vision Pro 拍摄一次以飞机坠毁告终引发关注。
+        </div>
+        <div class="card-kw"><span class="kw">apple</span><span class="kw">smart-glasses</span><span class="kw">app-store</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">
+          <span class="tag industry">AI写作</span>
+          <span class="card-date">4/19</span>
+        </div>
+        <div class="card-title">Wired 深度报道：AI 起草我的故事？休想</div>
+        <div class="card-body">
+          Wired 发表深度文章探讨AI写作对创意产业的影响，多位作家表达对AI替代人类创作的强烈抵抗。与此同时，《华盛顿邮报》社论呼吁学校禁用AI检测器，认为其对无辜学生造成误判。
+        </div>
+        <div class="card-kw"><span class="kw">ai-writing</span><span class="kw">detection</span><span class="kw">education</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">
+          <span class="tag industry">亚洲AI创业</span>
+          <span class="card-date">4/14</span>
+        </div>
+        <div class="card-title">亚洲50家新兴AI初创公司报告发布，数字转型投资强劲</div>
+        <div class="card-body">
+          Tech in Asia 发布报告，评选亚洲50家新兴AI初创公司。报告反映亚太地区在数字转型和智能自动化投资方面的强劲势头，中国、印度、新加坡和日本为主要聚集地。
+        </div>
+        <div class="card-kw"><span class="kw">asia</span><span class="kw">startups</span><span class="kw">50-companies</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">
+          <span class="tag industry">中国AI人才</span>
+          <span class="card-date">4/13</span>
+        </div>
+        <div class="card-title">中国从硅谷吸引顶级AI人才回国：更好薪酬与生活质量</div>
+        <div class="card-body">
+          报道显示中国正以更高薪酬、更好生活质量和更大研究自主权，系统性地从硅谷吸引顶级AI人才回国。多位前 Google、Meta AI 研究员已加入中国企业或创立新公司。
+        </div>
+        <div class="card-kw"><span class="kw">talent</span><span class="kw">china</span><span class="kw">silicon-valley</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">
+          <span class="tag industry">AI安全</span>
+          <span class="card-date">4/13</span>
+        </div>
+        <div class="card-title">首例 AI 裸照案定罪：俄亥俄男子使用100+ AI工具制作违法内容</div>
+        <div class="card-body">
+          俄亥俄男子在《Take It Down Act》下被定罪——使用超过100种AI工具制作AI生成裸照。这是美国首例根据AI深度伪造相关法律定罪的案件，对AI监管执法具有里程碑意义。
+        </div>
+        <div class="card-kw"><span class="kw">deepfake</span><span class="kw">legal</span><span class="kw">take-it-down-act</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">
+          <span class="tag industry">阿里ATH</span>
+          <span class="card-date">4/15</span>
+        </div>
+        <div class="card-title">阿里 ATH 发布零门槛 AI 开发工具 Meoo（秒悟），最快1分钟生成完整应用</div>
+        <div class="card-body">
+          阿里 ATH 事业群发布零门槛AI开发工具 Meoo，支持网页搭建、应用创建及数据与文件处理。用户无需编程基础，最快1分钟可生成完整应用，现阶段免费开放。
+        </div>
+        <div class="card-kw"><span class="kw">alibaba</span><span class="kw">meoo</span><span class="kw">low-code</span><span class="kw">free</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">
+          <span class="tag industry">AI数学</span>
+          <span class="card-date">4/13</span>
+        </div>
+        <div class="card-title">现成 LLM 端到端临床推理接近训练有素的医生水平</div>
+        <div class="card-body">
+          JAMA Network Open 发表跨学科研究，发现现成LLM在端到端临床推理任务中的表现已接近训练有素的医生。同时，宾夕法尼亚大学使用AI分析40万条Reddit帖子，发现未报告的GLP-1副作用。
+        </div>
+        <div class="card-kw"><span class="kw">medical</span><span class="kw">llm</span><span class="kw">clinical</span><span class="kw">glp-1</span></div>
+      </div>
+
+    </div>
+  </section>
+
+</div>
+
+</body>
+</html>
