@@ -35,13 +35,13 @@ jobs:
         uses: actions/configure-pages@v4
 
       - name: Build with Jekyll
-        run: bundle exec jekyll build
+        run: bundle exec jekyll build --baseurl "/reports"
         env:
           JEKYLL_ENV: production
 
       - name: Create backward compatible URLs
         run: |
-          cd _site/
+          cd _site/reports
           cp mlsys2026-analysis.html mlsys2026_analysis.html
           cp agent-engineering-report.html agent_engineering_report.html
           cp ai-weekly-2026-04-19.html ai_weekly_2026-04-19.html
