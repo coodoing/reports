@@ -1,26 +1,24 @@
 ---
 layout: default
-title: 项目报告列表
+title: 深度报告
 ---
 
-# 所有报告
+## 报告列表
 
-{% comment %} 按修改时间倒序排列（最新的在前） {% endcomment %}
-{% assign reports = site.static_files | where: "extname", ".html" | sort: "modified_time" | reverse %}
-
-{% if reports.size == 0 %}
-  <p>暂无报告，请稍后查看。</p>
-{% else %}
-  <ul>
-  {% for file in reports %}
+<ul class="post-list">
+  {% for post in site.posts %}
     <li>
-      <a href="{{ file.path | relative_url }}">
-        {{ file.basename | replace: "-", " " | replace: "_", " " }}
-      </a>
-      <span style="color: #666; font-size: 0.9em;">
-        （{{ file.modified_time | date: "%Y-%m-%d %H:%M" }}）
-      </span>
+      <span class="post-date">{{ post.date | date: "%Y-%m-%d" }}</span>
+      <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
     </li>
   {% endfor %}
-  </ul>
-{% endif %}
+</ul>
+
+<!-- ## 统计
+
+- 共 {{ site.posts.size }} 篇报告
+- 最后更新：{{ site.time | date: "%Y-%m-%d %H:%M" }} -->
+
+<!-- ## 订阅
+
+- RSS 订阅：[点击这里](/feed.xml) -->

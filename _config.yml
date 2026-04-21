@@ -1,0 +1,40 @@
+title: "深度报告"
+description: "前沿AI领域深度解读"
+author: "zhuyan"
+url: "https://coodoing.github.io"
+baseurl: ""
+
+permalink: /reports/:title.html
+
+include:
+  - CNAME
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - .github
+  - originals
+  - scripts
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: "default"
+  - scope:
+      path: "_posts"
+      type: "posts"
+    values:
+      layout: "post"
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+collections:
+  posts:
+    output: true
+    permalink: /reports/:title.html

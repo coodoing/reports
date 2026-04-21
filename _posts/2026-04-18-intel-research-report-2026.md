@@ -1,4 +1,9 @@
-<!DOCTYPE html>
+---
+description: ""
+title: "Intel深度报告"
+date: 2026-04-18
+layout: raw
+---
 <html lang="zh-CN">
 <head>
   <!-- Google tag (gtag.js) -->

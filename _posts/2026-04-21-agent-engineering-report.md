@@ -1,4 +1,8 @@
-<!DOCTYPE html>
+---
+title: "AIE Europe2026 解读及Agent工程化"
+date: 2026-04-21
+layout: raw
+---
 <html lang="zh-CN">
 <head>
   <!-- Google tag (gtag.js) -->
