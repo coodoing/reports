@@ -2,7 +2,7 @@ title: "深度报告"
 description: "前沿领域深度解读"
 author: "zhuyan"
 url: "https://coodoing.github.io"
-baseurl: ""
+baseurl: "/reports"
 
 permalink: /reports/:title.html
 
