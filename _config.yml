@@ -37,4 +37,4 @@ plugins:
 collections:
   posts:
     output: true
-    permalink: /reports/:title.html
+    permalink: /:title.html
