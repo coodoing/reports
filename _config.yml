@@ -4,7 +4,7 @@ author: "zhuyan"
 url: "https://coodoing.github.io"
 baseurl: ""
 
-permalink: /:title.html
+permalink: /reports/:title.html
 
 include:
   - CNAME
@@ -37,4 +37,4 @@ plugins:
 collections:
   posts:
     output: true
-    permalink: /:title.html
+    permalink: /reports/:title.html
