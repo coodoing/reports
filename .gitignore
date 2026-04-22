@@ -10,7 +10,8 @@ vendor/
 Gemfile.lock
 
 originals/
-
+scripts/
+docs/
 
 # IDE
 .vscode/
