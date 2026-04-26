@@ -5,20 +5,25 @@ title: 深度报告
 
 ## 报告列表
 
-<ul class="post-list">
+<div class="post-grid">
   {% for post in site.posts %}
-    <li>
-      <span class="post-date">{{ post.date | date: "%Y-%m-%d" }}</span>
-      <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-    </li>
+    {% assign minutes = post.content | strip_html | size | divided_by: 260 | ceil %}
+    <article class="post-card">
+      <a href="{{ post.url | relative_url }}">
+        <div class="card-meta">
+          <span class="card-date">{{ post.date | date: "%Y年%m月%d日" }}</span>
+          <span class="card-read-time">{{ minutes }} min read</span>
+        </div>
+        <h2 class="card-title">{{ post.title }}</h2>
+        <p class="card-excerpt">{{ post.description }}</p>
+        <div class="card-tags">
+          {% if post.tags %}
+            {% for tag in post.tags %}
+              <span class="tag">{{ tag }}</span>
+            {% endfor %}
+          {% endif %}
+        </div>
+      </a>
+    </article>
   {% endfor %}
-</ul>
-
-<!-- ## 统计
-
-- 共 {{ site.posts.size }} 篇报告
-- 最后更新：{{ site.time | date: "%Y-%m-%d %H:%M" }} -->
-
-<!-- ## 订阅
-
-- RSS 订阅：[点击这里](/feed.xml) -->
+</div>
