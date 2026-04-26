@@ -5,7 +5,6 @@ layout: raw
 description: "Agent 工程化能力技术报告 2026"
 tags: [人机协作,智能决策,知识管理,协作编排,核心执行,架构总览：五层能力模型]
 ---
-<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
   <!-- Google tag (gtag.js) -->

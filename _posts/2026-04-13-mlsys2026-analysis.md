@@ -5,7 +5,6 @@ layout: raw
 description: "MLSys 2026 论文深度分析报告"
 tags: []
 ---
-<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
   <!-- Google tag (gtag.js) -->
