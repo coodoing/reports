@@ -7,7 +7,7 @@ title: 深度报告
 
 <div class="post-grid">
   {% for post in site.posts %}
-    {% assign minutes = post.content | strip_html | size | divided_by: 260 | ceil %}
+    {% assign minutes = post.content | strip_html | size | divided_by: 600 | ceil %}
     <article class="post-card">
       <a href="{{ post.url | relative_url }}">
         <div class="card-meta">
