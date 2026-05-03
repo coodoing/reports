@@ -1,9 +1,9 @@
 ---
 title: "Intel-Research-Report-2026"
-date: 2026-04-18
+date: 2026-04-14
 layout: raw
 description: "英特尔深度调研报告 2026"
-tags: [财报概览,CPU涨价,产能规划,18A工艺,AI服务器需求,产品与竞争,大客户订单,马斯克合作,推理端影响,国产CPU,风险总结]
+tags: [财报,CPU涨价,产能规划,18A工艺,AI服务器,产品与竞争,大客户订单,马斯克]
 ---
 <html lang="zh-CN">
 <head>

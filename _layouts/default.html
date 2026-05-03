@@ -20,6 +20,16 @@
   {% feed_meta %}
 </head>
 <body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="{{ '/' | relative_url }}" class="logo">报告列表</a>
+      <nav class="nav-menu" id="navMenu">
+        <a href="#" class="nav-link active" data-filter="all">全部</a>
+        <a href="#" class="nav-link" data-filter="daily">技术报告</a>
+        <a href="#" class="nav-link" data-filter="deep">深度解读</a>
+      </nav>
+    </div>
+  </header>
   <main>
     {{ content }}
   </main>

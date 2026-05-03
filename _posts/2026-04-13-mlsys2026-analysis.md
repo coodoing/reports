@@ -1,21 +1,13 @@
 ---
-title: "MLSys 2026 论文深度分析报告"
+title: "Mlsys2026-Analysis"
 date: 2026-04-13
 layout: raw
 description: "MLSys 2026 论文深度分析报告"
-tags: []
+tags: [训练推理,Agent,量化 & 压缩,NVFP4,编译器 & 调度优化]
 ---
 <html lang="zh-CN">
 <head>
   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-30RDGNHJD7"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-30RDGNHJD7');
-</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MLSys 2026 论文深度分析报告</title>
@@ -33,16 +25,13 @@ tags: []
     --tag-bg: #eff6ff;
     --tag-color: #3b82f6;
   }
-
   * { box-sizing: border-box; margin: 0; padding: 0; }
-
   body {
     font-family: 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
     background: var(--bg);
     color: var(--text);
     line-height: 1.7;
   }
-
   /* HEADER */
   .hero {
     background: linear-gradient(135deg, #1a1a2e 0%, #16213e 40%, #0f3460 100%);
@@ -96,10 +85,8 @@ tags: []
   .hero-stat .label {
     font-size: 0.8rem; color: #a0aec0; text-transform: uppercase; letter-spacing: 1px; margin-top: 2px;
   }
-
   /* LAYOUT */
   .container { max-width: 1100px; margin: 0 auto; padding: 40px 24px; }
-
   /* SECTION TITLES */
   .section-title {
     font-size: 1.4rem;
@@ -114,7 +101,6 @@ tags: []
     border-radius: 4px;
     flex-shrink: 0;
   }
-
   /* DISTRIBUTION CHART */
   .dist-grid {
     display: grid;
@@ -136,7 +122,6 @@ tags: []
   .dist-card .cat-count { font-size: 1.6rem; font-weight: 800; color: var(--accent); }
   .dist-bar-wrap { background: #f1f5f9; border-radius: 4px; height: 6px; overflow: hidden; }
   .dist-bar { height: 100%; border-radius: 4px; }
-
   /* PAPER CARDS */
   .paper-grid {
     display: grid;
@@ -162,7 +147,6 @@ tags: []
   .paper-card h3 { font-size: 0.97rem; font-weight: 700; color: var(--text); margin-bottom: 8px; line-height: 1.4; }
   .paper-card .desc { font-size: 0.86rem; color: var(--text-light); line-height: 1.5; }
   .paper-card .authors { font-size: 0.78rem; color: #94a3b8; margin-top: 10px; border-top: 1px solid var(--border); padding-top: 8px; }
-
   /* TREND CARDS */
   .trend-grid {
     display: grid;
@@ -185,7 +169,6 @@ tags: []
     padding: 2px 10px; border-radius: 20px;
     display: inline-block;
   }
-
   /* HORIZON TIMELINE */
   .timeline { margin-bottom: 40px; }
   .timeline-item {
@@ -202,7 +185,6 @@ tags: []
   .tl-content { flex: 1; }
   .tl-content h4 { font-weight: 700; font-size: 1rem; margin-bottom: 4px; }
   .tl-content p { font-size: 0.87rem; color: var(--text-light); }
-
   /* KEY INSIGHTS */
   .insight-grid {
     display: grid;
@@ -220,7 +202,6 @@ tags: []
   .insight-icon { font-size: 1.6rem; flex-shrink: 0; }
   .insight-text h4 { font-weight: 700; font-size: 0.95rem; margin-bottom: 5px; }
   .insight-text p { font-size: 0.86rem; color: var(--text-light); }
-
   /* TABLE */
   .table-wrap { background: var(--card); border-radius: 14px; border: 1px solid var(--border); overflow: hidden; margin-bottom: 40px; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
   table { width: 100%; border-collapse: collapse; }
@@ -229,7 +210,6 @@ tags: []
   tr:last-child td { border-bottom: none; }
   tr:nth-child(even) td { background: #fafbff; }
   td .ptag { display: inline-block; font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 20px; }
-
   /* HEATMAP */
   .heatmap { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 40px; }
   .hm-cell {
@@ -237,7 +217,6 @@ tags: []
     font-size: 0.82rem; font-weight: 600; color: white;
     cursor: default;
   }
-
   /* FOOTER */
   .footer {
     background: var(--primary);
@@ -247,7 +226,6 @@ tags: []
     font-size: 0.85rem;
   }
   .footer strong { color: white; }
-
   /* TAG COLORS */
   .tag-serving { background: #fef3c7; color: #92400e; }
   .tag-training { background: #d1fae5; color: #065f46; }
@@ -259,7 +237,6 @@ tags: []
   .tag-hardware { background: #fff7ed; color: #9a3412; }
   .tag-security { background: #fef2f2; color: #991b1b; }
   .tag-misc { background: #f1f5f9; color: #475569; }
-
   /* BORDER COLORS FOR TREND CARDS */
   .bc1 { border-color: #e94560; }
   .bc2 { border-color: #0f3460; }
@@ -269,11 +246,9 @@ tags: []
   .bc6 { border-color: #06b6d4; }
   .bc7 { border-color: #6366f1; }
   .bc8 { border-color: #ec4899; }
-
   .horizon-near { background: #d1fae5; color: #065f46; }
   .horizon-mid { background: #fef3c7; color: #92400e; }
   .horizon-far { background: #ede9fe; color: #5b21b6; }
-
   @media (max-width: 700px) {
     .hero h1 { font-size: 1.7rem; }
     .paper-grid, .trend-grid, .insight-grid { grid-template-columns: 1fr; }
@@ -281,13 +256,12 @@ tags: []
 </style>
 </head>
 <body>
-
 <!-- HERO -->
 <div class="hero">
   <div class="hero-inner">
     <div class="hero-badge">研究报告</div>
     <h1>MLSys 2026 <span>论文深度分析</span></h1>
-    <p>对会议全部 135 篇录用论文进行系统分类、核心贡献提炼与未来技术趋势预测，覆盖 LLM 推理服务、训练系统、AI Agent、量化压缩、编译器等核心赛道。</p>
+    <p>对会议全部 135 篇录用论文进行系统分类、核心贡献提炼与朙�来技术趋势预测，覆盖 LLM 推理服务、训练系统、AI Agent、量化压缩、编译器等核心赛道。</p>
     <div class="hero-meta">
       <div class="hero-stat"><span class="num">135</span><span class="label">录用论文</span></div>
       <div class="hero-stat"><span class="num">10</span><span class="label">研究方向</span></div>
@@ -296,12 +270,9 @@ tags: []
     </div>
   </div>
 </div>
-
 <div class="container">
-
   <!-- ==================== 1. OVERVIEW ==================== -->
   <div class="section-title"><div class="dot"></div>论文分布全景</div>
-
   <div class="dist-grid">
     <div class="dist-card">
       <div class="cat-name">🚀 LLM 推理 & 服务</div>
@@ -346,274 +317,230 @@ tags: []
       <div style="font-size:0.8rem;color:#64748b;">ASIC、NoC 设计</div>
     </div>
   </div>
-
   <!-- ==================== 2. SPOTLIGHT PAPERS ==================== -->
   <div class="section-title"><div class="dot"></div>重点论文解析（精选 30 篇）</div>
-
   <!-- 2.1 LLM Inference & Serving -->
   <h3 style="font-size:1.05rem;font-weight:700;color:#1a1a2e;margin-bottom:16px;padding-left:14px;border-left:3px solid #e94560;">
     🚀 LLM 推理 &amp; 服务
   </h3>
   <div class="paper-grid">
-
     <div class="paper-card">
       <span class="ptag tag-serving">推理服务</span>
       <h3>FlashAttention-4: Algorithm and Kernel Pipelining Co-Design for Asymmetric Hardware Scaling</h3>
       <div class="desc">FA 系列第四代，针对最新 GPU 异构计算单元（TMA/WGMMA/Tensor Core 不对称性）进行算法级与 Kernel 级流水线协同设计，推动 Attention 效率进一步突破。</div>
       <div class="authors">Ted Zadouri, Markus Hoehnerbach, Jay Shah et al.</div>
     </div>
-
     <div class="paper-card">
       <span class="ptag tag-serving">推理服务</span>
       <h3>MorphServe: Efficient and Workload-Aware LLM Serving via Runtime Quantized Layer Swapping and KV Cache Resizing</h3>
       <div class="desc">运行时动态调整量化层精度与 KV Cache 大小，在负载感知的基础上实现延迟与吞吐量的联合优化，开创"弹性精度服务"新范式。</div>
       <div class="authors">Zhaoyuan Su, Zeyu Zhang, Tingfeng Lan et al.</div>
     </div>
-
     <div class="paper-card">
       <span class="ptag tag-serving">推理服务</span>
       <h3>Speculative Decoding: Performance or Illusion?</h3>
       <div class="desc">对投机解码的实际收益进行系统性评估，区分真实加速与虚假增益，指出在 RL 训练场景中推测解码可能带来负效益，引发方法论反思。</div>
       <div class="authors">Lily Liu, Jiaxiang Yu, Jongseok Park, Ion Stoica et al.</div>
     </div>
-
     <div class="paper-card">
       <span class="ptag tag-serving">推理服务</span>
       <h3>HELIOS: Adaptive Model And Early-Exit Selection for Efficient LLM Inference</h3>
       <div class="desc">结合模型选择与早退机制，自适应地为不同请求分配不同深度的计算路径，在 SLO 约束下最大化推理效率。</div>
       <div class="authors">Avinash Kumar, Shashank Nag, Jason Clemons et al.</div>
     </div>
-
     <div class="paper-card">
       <span class="ptag tag-serving">推理服务</span>
       <h3>BatchLLM: Optimizing Large Batched LLM Inference with Global Prefix Sharing and Throughput-oriented Token Batching</h3>
       <div class="desc">针对大批量推理场景的全局 Prefix 共享策略，与面向吞吐的 Token 批调度算法，显著降低大规模 Batch 场景的显存占用与延迟。</div>
       <div class="authors">Zhen Zheng, Xin Ji, Taosong Fang et al.</div>
     </div>
-
     <div class="paper-card">
       <span class="ptag tag-serving">推理服务</span>
       <h3>Breaking the Ice: Analyzing Cold Start Latency in vLLM</h3>
       <div class="desc">首次系统分析 vLLM 冷启动延迟成因，涵盖模型加载、CUDA 上下文初始化、KV Cache 预分配等各阶段，并提出针对性优化策略。</div>
       <div class="authors">Huzaifa Shaaban Kabakibo, Animesh Trivedi, Lin Wang</div>
     </div>
-
     <div class="paper-card">
       <span class="ptag tag-serving">推理服务</span>
       <h3>Beyond the Buzz: A Pragmatic Take on Inference Disaggregation</h3>
       <div class="desc">理性评估 Prefill/Decode 分离部署的真实收益与代价，结合工程实践给出选择分离架构的量化决策框架，避免盲目跟风。</div>
       <div class="authors">Tiyasa Mitra, Ritika Borkar, Nidhi Bhatia et al.</div>
     </div>
-
     <div class="paper-card">
       <span class="ptag tag-serving">推理服务</span>
       <h3>SuperInfer: SLO-Aware Rotary Scheduling and Memory Management for LLM Inference on Superchips</h3>
       <div class="desc">针对超级芯片（如 Grace Hopper）的 LLM 推理调度优化，利用旋转调度算法与精细化内存管理满足严格 SLO 约束。</div>
       <div class="authors">Jiahuan Yu, Mingtao Hu, Minjia Zhang et al.</div>
     </div>
-
     <div class="paper-card">
       <span class="ptag tag-serving">推理服务</span>
       <h3>SHIP: SRAM-Based Huge Inference Pipelines for Fast LLM Serving</h3>
-      <div class="desc">充分利用片上 SRAM 构建多级流水线推理架构，在延迟敏感场景下突破 HBM 带宽瓶颈。</div>
+      <div class="desc">充分利用片上 SRAM 构建多级流水线推理架构，在廙�迟敏感场景下突破 HBM 带宽瓶颈。</div>
       <div class="authors">（多位作者）</div>
     </div>
-
     <div class="paper-card">
       <span class="ptag tag-serving">推理服务</span>
       <h3>Demystifying the Mixture of Experts Serving Tax</h3>
       <div class="desc">量化 MoE 推理相比 Dense 模型的额外开销来源（路由、通信、负载均衡），为 MoE 服务系统设计提供指导。</div>
       <div class="authors">Pratyush Patel, Arvind Krishnamurthy</div>
     </div>
-
     <div class="paper-card">
       <span class="ptag tag-serving">推理服务</span>
       <h3>TriInfer: Hybrid EPD Disaggregation for Efficient Multimodal Large Language Model Inference</h3>
       <div class="desc">为多模态 LLM 设计三阶段（Encode-Prefill-Decode）混合分离架构，实现视觉编码与语言推理的解耦调度。</div>
       <div class="authors">Xianzhe Dong, Tongxuan Liu et al.</div>
     </div>
-
     <div class="paper-card">
       <span class="ptag tag-serving">投机解码</span>
       <h3>SpecDiff-2: Scaling Diffusion Drafter Alignment for Faster Speculative Decoding</h3>
       <div class="desc">将扩散模型作为投机解码的 Draft 模型，并通过对齐训练提升接受率，为超长序列生成提供新路径。</div>
       <div class="authors">Wenhao Zheng, Zhengzhong Liu et al.</div>
     </div>
-
   </div>
-
   <!-- 2.2 Training Systems -->
   <h3 style="font-size:1.05rem;font-weight:700;color:#1a1a2e;margin:24px 0 16px;padding-left:14px;border-left:3px solid #3b82f6;">
     ⚡ 模型训练系统
   </h3>
   <div class="paper-grid">
-
     <div class="paper-card">
       <span class="ptag tag-training">训练系统</span>
       <h3>MoEBlaze: Breaking the Memory Wall for Efficient MoE Training on Modern GPUs</h3>
       <div class="desc">针对 MoE 训练的显存墙问题，设计内存感知的专家分片与激活重计算策略，支持在单节点 GPU 集群上训练千亿级 MoE 模型。</div>
       <div class="authors">Jiyuan Zhang, Yining Liu, Siqi Yan et al.</div>
     </div>
-
     <div class="paper-card">
       <span class="ptag tag-training">训练系统</span>
       <h3>AXLearn: Modular, Hardware-Agnostic Large Model Training</h3>
       <div class="desc">苹果开源的大模型训练框架，强调硬件无关性与模块化设计，支持 TPU/GPU 统一训练接口，已在生产环境验证。</div>
       <div class="authors">Mark Lee, Tom Gunter, Chang Lan et al. (Apple)</div>
     </div>
-
     <div class="paper-card">
-      <span class="ptag tag-training">训练系统</span>
+      <span class="ptag tag-training">训练系给�</span>
       <h3>DreamDDP: Accelerating Low-Bandwidth Geo-Distributed LLM Training with Layer-wise Partial Synchronization</h3>
       <div class="desc">为跨地域分布式训练设计逐层部分同步策略，大幅降低跨 WAN 通信量，实现弱网环境下的高效 LLM 训练。</div>
       <div class="authors">Zhenheng Tang, Zichen Tang et al.</div>
     </div>
-
     <div class="paper-card">
       <span class="ptag tag-training">训练系统</span>
       <h3>MTraining: Distributed Dynamic Sparse Attention for Efficient Ultra-Long Context Training</h3>
       <div class="desc">通过动态稀疏注意力机制支持超长上下文（百万级 Token）的分布式训练，突破标准全注意力的内存与计算瓶颈。</div>
       <div class="authors">Wenxuan Li, Chengruidong Zhang, Huiqiang Jiang et al.</div>
     </div>
-
     <div class="paper-card">
       <span class="ptag tag-training">训练系统</span>
       <h3>HetRL: Efficient Reinforcement Learning for LLMs in Heterogeneous Environments</h3>
       <div class="desc">面向 RLHF/RLVR 场景的异构 RL 训练系统，支持在不同规格 GPU 混合集群上高效运行 Actor/Critic，降低强化学习阶段的资源成本。</div>
       <div class="authors">Yongjun He et al.</div>
     </div>
-
     <div class="paper-card">
       <span class="ptag tag-training">训练系统</span>
       <h3>FlexTrain: Scalable Hybrid-Parallel LLM Training with Elastic Resource Utilization and Consistent Accuracy</h3>
       <div class="desc">弹性混合并行训练框架，支持动态调整数据/张量/流水线并行度，在资源波动场景下保持训练精度稳定。</div>
       <div class="authors">Weilin Cai, Diandian Gu et al.</div>
     </div>
-
   </div>
-
   <!-- 2.3 AI Agent Systems -->
   <h3 style="font-size:1.05rem;font-weight:700;color:#1a1a2e;margin:24px 0 16px;padding-left:14px;border-left:3px solid #ec4899;">
     🤖 AI Agent 系统
   </h3>
   <div class="paper-grid">
-
     <div class="paper-card">
       <span class="ptag tag-agent">Agent 系统</span>
       <h3>The OpenHands Software Agent SDK: A Composable and Extensible Foundation for Production Agents</h3>
       <div class="desc">开源软件 Agent SDK，提供可组合、可扩展的生产级 Agent 基础设施，支持工具调用、沙箱执行、状态持久化等核心能力。</div>
       <div class="authors">Xingyao Wang et al. (OpenHands Team)</div>
     </div>
-
     <div class="paper-card">
       <span class="ptag tag-agent">Agent 系统</span>
       <h3>Hippocampus: An Efficient and Scalable Memory Module for Agentic AI</h3>
       <div class="desc">受海马体启发的 Agent 记忆模块，支持层次化长短期记忆管理，在多轮对话与长任务中显著提升 Agent 的上下文利用效率。</div>
       <div class="authors">Yi Li, Lianjie Cao, Faraz Ahmed et al.</div>
     </div>
-
     <div class="paper-card">
       <span class="ptag tag-agent">Agent 系统</span>
       <h3>ADS: An Agentic Detection System for Enterprise Agentic AI Security</h3>
       <div class="desc">企业级 Agentic AI 安全检测系统，识别 Prompt 注入、工具滥用、数据泄露等威胁，为 Agent 部署提供安全护栏。</div>
       <div class="authors">Chenning Li, Pan Hu, Justin Xu et al.</div>
     </div>
-
     <div class="paper-card">
       <span class="ptag tag-agent">Agent 系统</span>
       <h3>FlashAgents: Accelerating Multi-Agent LLM Systems via Streaming Prefill Overlap</h3>
       <div class="desc">通过流式 Prefill 重叠机制加速多 Agent 协作场景的 LLM 推理，减少 Agent 间通信等待，提升端到端响应速度。</div>
       <div class="authors">Taosong Fang, Zhen Zheng et al.</div>
     </div>
-
     <div class="paper-card">
       <span class="ptag tag-agent">Agent 系统</span>
       <h3>AgenticCache: Cache-Driven Asynchronous Planning for Embodied AI Agents</h3>
       <div class="desc">为具身 Agent 设计缓存驱动的异步规划框架，利用感知缓存避免重复推理，大幅提升机器人决策的实时性。</div>
       <div class="authors">Hojoon Kim, Yuheng Wu, Thierry Tambe</div>
     </div>
-
     <div class="paper-card">
       <span class="ptag tag-agent">Agent 系统</span>
       <h3>OSWorld-Human: Benchmarking the Efficiency of Computer-Use Agents</h3>
       <div class="desc">计算机操作 Agent 的效率评测基准，引入人类操作对照数据，从任务完成率、步骤效率、错误恢复等多维度量化 Agent 性能。</div>
       <div class="authors">（多位作者）</div>
     </div>
-
   </div>
-
   <!-- 2.4 Quantization & Compression -->
   <h3 style="font-size:1.05rem;font-weight:700;color:#1a1a2e;margin:24px 0 16px;padding-left:14px;border-left:3px solid #8b5cf6;">
     🔧 量化 &amp; 压缩
   </h3>
   <div class="paper-grid">
-
     <div class="paper-card">
       <span class="ptag tag-quantize">量化压缩</span>
       <h3>NVFP4 Search Your Scales!</h3>
       <div class="desc">NVIDIA FP4 格式下的量化缩放因子搜索算法，解决超低精度量化的精度保持难题，为下一代 GPU（Blackwell）的 FP4 推理铺路。</div>
       <div class="authors">Tanmaey Gupta, Hayden Prairie, Xiaoxia Wu et al.</div>
     </div>
-
     <div class="paper-card">
       <span class="ptag tag-quantize">量化压缩</span>
       <h3>Kitty: Accurate and Efficient 2-bit KV Cache Quantization with Dynamic Channel-wise Precision Boost</h3>
       <div class="desc">KV Cache 极致压缩至 2-bit，引入动态通道精度提升机制保护重要通道，在极低 bit-width 下维持推理质量。</div>
       <div class="authors">Haojun Xia, Xiaoxia Wu et al.</div>
     </div>
-
     <div class="paper-card">
       <span class="ptag tag-quantize">量化压缩</span>
       <h3>FP8-Flow-MoE: A Casting-Free FP8 Recipe without Double Quantization Error</h3>
       <div class="desc">专为 MoE 模型设计的无投射 FP8 量化方案，消除二次量化误差，在 FP8 训练与推理的精度-效率 trade-off 上取得新突破。</div>
       <div class="authors">Fengjuan Wang, Zhiyi Su et al.</div>
     </div>
-
     <div class="paper-card">
       <span class="ptag tag-quantize">量化压缩</span>
       <h3>SkipKV: Selective Skipping of KV Generation and Storage for Efficient Inference with Large Reasoning Models</h3>
       <div class="desc">针对长链推理（Chain-of-Thought）模型，选择性跳过中间推理步骤的 KV 缓存生成，显著降低 KV Cache 内存占用。</div>
       <div class="authors">Jiayi Tian, Seyedarmin Azizi et al.</div>
     </div>
-
   </div>
-
   <!-- 2.5 Compiler & Scheduling -->
   <h3 style="font-size:1.05rem;font-weight:700;color:#1a1a2e;margin:24px 0 16px;padding-left:14px;border-left:3px solid #06b6d4;">
     🛠 编译器 &amp; 调度优化
   </h3>
   <div class="paper-grid">
-
     <div class="paper-card">
       <span class="ptag tag-compiler">编译器</span>
       <h3>CATWILD: Compiler Autotuning for TPU Workloads in the Wild</h3>
       <div class="desc">谷歌针对 TPU 生产负载的编译器自动调优系统，利用 ML 反馈驱动调优，覆盖"野外"真实工作负载的多样性与复杂性。</div>
       <div class="authors">Ignacio Cano, Yu Wang, Phitchaya Phothilimthana et al. (Google)</div>
     </div>
-
     <div class="paper-card">
       <span class="ptag tag-compiler">编译器</span>
       <h3>WAVE: A Symbolic Python DSL and Compiler for High Performance Machine Learning</h3>
       <div class="desc">符号化 Python DSL 及其配套编译器，支持将高层 ML 计算描述直接编译到高性能核函数，降低 Kernel 工程门槛。</div>
       <div class="authors">Harsh Menon et al. (AMD)</div>
     </div>
-
     <div class="paper-card">
       <span class="ptag tag-compiler">编译器</span>
       <h3>Agentic Operator Generation for ML ASICs</h3>
       <div class="desc">利用 LLM Agent 自动生成 ML 专用 ASIC 的算子代码，打通从算法规格到硬件实现的自动化链路，加速 AI 芯片研发。</div>
       <div class="authors">Aram Markosyan, Aman Dontula et al. (Meta)</div>
     </div>
-
     <div class="paper-card">
       <span class="ptag tag-compiler">编译器</span>
       <h3>SchedFlow: Unified Transparent and Flexible Intra-Device Parallelism via Programmable Operator Scheduling</h3>
       <div class="desc">可编程算子调度框架，统一设备内并行策略，支持在不修改算子代码的情况下灵活切换调度策略。</div>
       <div class="authors">Yi Pan, Yile Gu et al.</div>
     </div>
-
   </div>
-
   <!-- ==================== 3. FULL PAPER LIST TABLE ==================== -->
   <div class="section-title"><div class="dot"></div>全部论文分类总览</div>
   <div class="table-wrap">
@@ -637,10 +564,10 @@ tags: []
         <tr><td>8</td><td>Hippocampus</td><td><span class="ptag tag-agent">Agent</span></td><td>高效可扩展的 Agentic AI 记忆模块</td></tr>
         <tr><td>9</td><td>IntAttention</td><td><span class="ptag tag-quantize">量化</span></td><td>全整数注意力流水线，面向边缘推理</td></tr>
         <tr><td>10</td><td>Using Span Queries</td><td><span class="ptag tag-infra">基础设施</span></td><td>Span 查询优化 Cache 与 Attention 局部性</td></tr>
-        <tr><td>11</td><td>NEST: Network/Memory-Aware Device Placement</td><td><span class="ptag tag-training">训练系统</span></td><td>分布式深度学习的网络感知设备放置</td></tr>
+        <tr><td>11</td><td>NEST: Network/Memory-Aware Device Placement</td><td><span class="ptag tag-training">训练系给�</span></td><td>分布式深度学习的网络感知设备放置</td></tr>
         <tr><td>12</td><td>FP8-Flow-MoE</td><td><span class="ptag tag-quantize">量化</span></td><td>MoE 无投射 FP8 方案</td></tr>
         <tr><td>13</td><td>FlexiCache</td><td><span class="ptag tag-serving">KV Cache</span></td><td>利用注意力头时序稳定性的 KV Cache 管理</td></tr>
-        <tr><td>14</td><td>Efficient Long-Context LM Training</td><td><span class="ptag tag-training">训练系统</span></td><td>核心注意力分离架构支持超长上下文训练</td></tr>
+        <tr><td>14</td><td>Efficient Long-Context LM Training</td><td><span class="ptag tag-training">训练系统</span></td><td>核忙�注意力分离架构支持超长上下文训练</td></tr>
         <tr><td>15</td><td>Agentic Operator Generation for ML ASICs</td><td><span class="ptag tag-compiler">编译器</span></td><td>Agent 自动生成 ASIC 算子</td></tr>
         <tr><td>16</td><td>ADS: Agentic Detection System</td><td><span class="ptag tag-security">安全</span></td><td>企业级 Agentic AI 安全检测系统</td></tr>
         <tr><td>17</td><td>Accelerating Large-Scale Reasoning with Sparse Self-Speculative Decoding</td><td><span class="ptag tag-serving">投机解码</span></td><td>稀疏自投机解码加速大规模推理模型</td></tr>
@@ -674,7 +601,7 @@ tags: []
         <tr><td>45</td><td>XProf: Open, Scalable ML Profiling System</td><td><span class="ptag tag-infra">基础设施</span></td><td>现代 ML 栈的开源可扩展剖析系统</td></tr>
         <tr><td>46</td><td>MTraining: Ultra-Long Context Training</td><td><span class="ptag tag-training">训练系统</span></td><td>分布式动态稀疏注意力超长上下文训练</td></tr>
         <tr><td>47</td><td>Stream2LLM: Streaming Context Prefill</td><td><span class="ptag tag-serving">推理服务</span></td><td>流式上下文传输与 Prefill 重叠减少 TTFT</td></tr>
-        <tr><td>48</td><td>REPARO: Loss-Resilient Generative Video Codec</td><td><span class="ptag tag-infra">视频</span></td><td>生成式视频会议编解码器</td></tr>
+        <tr><td>48</td><td>REPARO: Loss-Resilient Generative Video Codec</td><td><span class="ptag tag-infra">视频</span></td><td>甙�成式视频会议编解码器</td></tr>
         <tr><td>49</td><td>ZK-APEX: Zero-Knowledge Approximate Personalized Unlearning</td><td><span class="ptag tag-security">安全/隐私</span></td><td>零知识证明的近似个性化遗忘</td></tr>
         <tr><td>50</td><td>Automated Algorithm Design for Auto-Tuning Optimizers</td><td><span class="ptag tag-compiler">编译器</span></td><td>自动调优优化器的算法自动设计</td></tr>
         <tr><td>51</td><td>Ontology-Guided Long-Term Memory for RAG</td><td><span class="ptag tag-agent">Agent</span></td><td>本体引导的 RAG 对话长期记忆</td></tr>
@@ -695,7 +622,7 @@ tags: []
         <tr><td>66</td><td>AccelOpt: Self-Improving LLM Agentic System for AI Accelerator Kernel Optimization</td><td><span class="ptag tag-agent">Agent</span></td><td>LLM Agent 自改进加速器 Kernel 优化</td></tr>
         <tr><td>67</td><td>DisAgg: Distributed Aggregators for Secure Aggregation</td><td><span class="ptag tag-federated">联邦学习</span></td><td>高效安全聚合的分布式聚合器</td></tr>
         <tr><td>68</td><td>RagInfer: Efficient RAG Inference with Lookahead Retrieval</td><td><span class="ptag tag-serving">RAG</span></td><td>超前检索的高效 RAG 推理</td></tr>
-        <tr><td>69</td><td>VeriMoA: Mixture-of-Agents for Spec-to-HDL Generation</td><td><span class="ptag tag-agent">Agent</span></td><td>多 Agent 框架辅助 HDL 硬件代码生成</td></tr>
+        <tr><td>69</td><td>VeriMoA: Mixture-of-Agents for Spec-to-HDL Generation</td><td><span class="ptag tag-agent">Agent</span></td><td>多 Agent 框架辙�助 HDL 硬件代码生成</td></tr>
         <tr><td>70</td><td>BOOST: Bottleneck-Optimized Scalable Training for LoRA LLMs</td><td><span class="ptag tag-training">训练系统</span></td><td>低秩大模型的瓶颈优化可扩展训练</td></tr>
         <tr><td>71</td><td>SONAR: Benchmarking Topology in Decentralized Learning</td><td><span class="ptag tag-training">训练系统</span></td><td>去中心化学习的拓扑与协作基准</td></tr>
         <tr><td>72</td><td>VM NUMA Placement at Scale</td><td><span class="ptag tag-infra">基础设施</span></td><td>大规模 NUMA 感知虚拟机放置学习</td></tr>
@@ -759,17 +686,15 @@ tags: []
         <tr><td>130</td><td>MLCommons Chakra: Performance Benchmarking with Execution Traces</td><td><span class="ptag tag-infra">基准测试</span></td><td>基于标准执行 Trace 的 ML 性能基准与协同设计</td></tr>
         <tr><td>131</td><td>TriInfer: Hybrid EPD Disaggregation for Multimodal LLMs</td><td><span class="ptag tag-serving">推理服务</span></td><td>多模态 LLM 三阶段混合分离推理</td></tr>
         <tr><td>132</td><td>A Lightweight High-Throughput Collective-Capable NoC for Large-Scale ML Accelerators</td><td><span class="ptag tag-hardware">硬件</span></td><td>大规模 ML 加速器高吞吐片上网络</td></tr>
-        <tr><td>133</td><td>GriNNder: Breaking Memory Capacity Wall in GNN Training with Storage Offloading</td><td><span class="ptag tag-training">训练系统</span></td><td>存储卸载突破全图 GNN 训练显存墙</td></tr>
+        <tr><td>133</td><td>GriNNder: Breaking Memory Capacity Wall in GNN Training with Storage Offloading</td><td><span class="ptag tag-training">训练系统</span></td><td>存储卸载突破全图 GNN 讙�练显存墙</td></tr>
         <tr><td>134</td><td>Efficient VRAM-Constrained xLM Inference on Clients</td><td><span class="ptag tag-infra">端侧</span></td><td>客户端 VRAM 约束下的跨语言模型推理</td></tr>
         <tr><td>135</td><td>Attribution-based Sparse Activation in LLMs</td><td><span class="ptag tag-serving">推理服务</span></td><td>基于归因的 LLM 稀疏激活</td></tr>
       </tbody>
     </table>
   </div>
-
   <!-- ==================== 4. KEY TECH TRENDS ==================== -->
   <div class="section-title"><div class="dot"></div>八大核心技术趋势</div>
   <div class="trend-grid">
-
     <div class="trend-card bc1">
       <div class="t-icon">⚡</div>
       <div class="t-title">趋势一：推理系统成为 MLSys 绝对核心</div>
@@ -778,7 +703,6 @@ tags: []
       </div>
       <span class="t-horizon horizon-near">已成主流</span>
     </div>
-
     <div class="trend-card bc2">
       <div class="t-icon">🧩</div>
       <div class="t-title">趋势二：MoE 模型系统支持全面深化</div>
@@ -787,16 +711,14 @@ tags: []
       </div>
       <span class="t-horizon horizon-near">已成主流</span>
     </div>
-
     <div class="trend-card bc3">
       <div class="t-icon">🤖</div>
       <div class="t-title">趋势三：Agentic AI 系统崛起为独立赛道</div>
       <div class="t-body">
-        Agent 系统论文数量与内容多样性均首次达到会议独立赛道规模：记忆管理（Hippocampus）、安全（ADS）、具身智能（AgenticCache）、SDK（OpenHands）、多 Agent 推理加速（FlashAgents）、Kernel 优化（AccelOpt）、HDL 生成（VeriMoA）。Agent OS 研究方向正在形成。
+        Agent 系统论文数量与写�容多样性均首次达到会议独立赛道规模：记忆管理（Hippocampus）、安全（ADS）、具身智能（AgenticCache）、SDK（OpenHands）、多 Agent 推理加速（FlashAgents）、Kernel 优化（AccelOpt）、HDL 生成（VeriMoA）。Agent OS 研究方向正在形成。
       </div>
       <span class="t-horizon horizon-mid">快速成长</span>
     </div>
-
     <div class="trend-card bc4">
       <div class="t-icon">🔢</div>
       <div class="t-title">趋势四：量化精度向 4-bit 乃至 2-bit 激进推进</div>
@@ -805,25 +727,22 @@ tags: []
       </div>
       <span class="t-horizon horizon-mid">1-2年内普及</span>
     </div>
-
     <div class="trend-card bc5">
       <div class="t-icon">📏</div>
       <div class="t-title">趋势五：超长上下文（1M+ Token）成为系统级挑战</div>
       <div class="t-body">
-        MTraining（分布式动态稀疏注意力）、Efficient Long-Context LM Training（核注意力分离）、Unleashing Scalable Context Parallelism（FCP 上下文并行）、Stream2LLM（流式 Prefill）等多篇论文针对百万级 Token 的训练与推理展开攻关。长上下文将倒逼注意力算法、KV Cache 策略、通信拓扑的全栈重设计。
+        MTraining（分布式动态稀疏注意力）、Efficient Long-Context LM Training（核注意力分离）、Unleashing Scalable Context Parallelism（FCP 上下文并行）、Stream2LLM（流式 Prefill）等多篇论文针对百万级 Token 的训练与推理展开攻关。长上下文将倒逼注意力算法、KV Cache 策略、通信拓扑的全栈重设讙�。
       </div>
       <span class="t-horizon horizon-mid">1-2年内主流</span>
     </div>
-
     <div class="trend-card bc6">
       <div class="t-icon">🌐</div>
       <div class="t-title">趋势六：异构硬件与跨设备训练系统化</div>
       <div class="t-body">
-        Grolar（异构集群 LLM 训练）、HexiScale（异构硬件）、HetRL（异构 RL 环境）、FlexScale（弹性 FSDP）、BOute（异构 LLM/GPU 服务）、NEST（网络内存感知设备放置）。随着算力碎片化（不同代 GPU/TPU/自研芯片共存），异构系统将成为工业界的常态挑战。
+        Grolar（异构集群 LLM 训练）、HexiScale（异构硬件）、HetRL（异构 RL 环境）、FlexScale（弹性 FSDP）、BOute（异构 LLM/GPU 服务）、NEST（网络内存感知设备放置）。随着算力碎片化９�不同代 GPU/TPU/自研芯片共存），异构系统将成为工业界的常态挑战。
       </div>
       <span class="t-horizon horizon-mid">2年内成标准</span>
     </div>
-
     <div class="trend-card bc7">
       <div class="t-icon">🔁</div>
       <div class="t-title">趋势七：强化学习训练系统专项优化兴起</div>
@@ -832,7 +751,6 @@ tags: []
       </div>
       <span class="t-horizon horizon-mid">正在快速增长</span>
     </div>
-
     <div class="trend-card bc8">
       <div class="t-icon">🛡️</div>
       <div class="t-title">趋势八：AI 安全与隐私进入系统级讨论</div>
@@ -841,13 +759,10 @@ tags: []
       </div>
       <span class="t-horizon horizon-far">2-3年成熟</span>
     </div>
-
   </div>
-
   <!-- ==================== 5. PREDICTION TIMELINE ==================== -->
   <div class="section-title"><div class="dot"></div>技术演进时间轴预测（2026–2030）</div>
   <div class="timeline">
-
     <div class="timeline-item">
       <div class="tl-year" style="color:#e94560;">2026</div>
       <div class="tl-line">
@@ -859,7 +774,6 @@ tags: []
         <p>Prefill-Decode 分离部署进入主流云服务；FlashAttention-4 推动各框架默认 Attention 实现更新；FP8 训练与推理在主流 GPU 平台标准化；MoE 成为新发布大模型的默认架构，对应服务系统随之成熟。</p>
       </div>
     </div>
-
     <div class="timeline-item">
       <div class="tl-year" style="color:#f97316;">2027</div>
       <div class="tl-line">
@@ -871,7 +785,6 @@ tags: []
         <p>Agent 记忆、工具调用、安全沙箱在主流框架（如 OpenHands）中统一；1M+ Token 的推理服务借助 FCP/稀疏注意力/流式 Prefill 可商业化部署；2-bit KV Cache 量化走向生产；RL 训练系统与预训练系统在框架层面统一。</p>
       </div>
     </div>
-
     <div class="timeline-item">
       <div class="tl-year" style="color:#0f3460;">2028</div>
       <div class="tl-line">
@@ -883,7 +796,6 @@ tags: []
         <p>跨厂商 GPU/TPU/定制 ASIC 的统一训推平台成熟；CATWILD/WAVE 类自动调优编译器集成到主要 MLOps 平台；Agentic Operator Generation 工具链进入 ASIC 研发标准流程；Serverless LLM 推理（FaaScale）成为云原生 AI 的主流交付模式。</p>
       </div>
     </div>
-
     <div class="timeline-item">
       <div class="tl-year" style="color:#533483;">2029–2030</div>
       <div class="tl-line">
@@ -895,13 +807,10 @@ tags: []
         <p>同态加密推理（G-HEMP）从研究走向实用；零知识遗忘（ZK-APEX）应对 GDPR 等合规需求；GPU 机密计算（Blueprint）成为云端 AI 服务的 SLA 一部分；Agentic AI 的安全检测系统（ADS 类）内置于主流 Agent 平台；MLCommons Chakra 类标准执行 Trace 推动 AI 硬件互操作性。</p>
       </div>
     </div>
-
   </div>
-
   <!-- ==================== 6. KEY INSIGHTS ==================== -->
   <div class="section-title"><div class="dot"></div>六大深度洞察</div>
   <div class="insight-grid">
-
     <div class="insight-card">
       <div class="insight-icon">🔭</div>
       <div class="insight-text">
@@ -909,7 +818,6 @@ tags: []
         <p>本届约 48% 的论文聚焦 LLM 推理，是过去 MLSys 各届会议中占比最高的一次，标志着 LLM 已从算法研究客体转变为系统研究的"新主机"。</p>
       </div>
     </div>
-
     <div class="insight-card">
       <div class="insight-icon">🏭</div>
       <div class="insight-text">
@@ -917,15 +825,13 @@ tags: []
         <p>Google（CATWILD、ML Fleet、XProf）、Apple（AXLearn）、Meta（ExecuTorch、Agentic Operator Generation、Optimizing Deployment）、NVIDIA（NVFP4）等主导了大量高影响力论文，产学研边界继续模糊化。</p>
       </div>
     </div>
-
     <div class="insight-card">
       <div class="insight-icon">⚠️</div>
       <div class="insight-text">
-        <h4>投机解码的"祛魅"时刻</h4>
+        <h4>投机解砙�的"祛魅"时刻</h4>
         <p>"Speculative Decoding: Performance or Illusion?" 与 "Beyond the Buzz" 等论文开始对此前被过度热炒的技术路线进行理性审视，MLSys 研究社区正在走向更成熟的工程化批判思维。</p>
       </div>
     </div>
-
     <div class="insight-card">
       <div class="insight-icon">🔗</div>
       <div class="insight-text">
@@ -933,7 +839,6 @@ tags: []
         <p>本届大量论文同时贡献算法创新与系统实现（FlashAttention-4、BLASST、MAC-Attention、MTraining），纯系统工程论文比例下降，"算法-系统协同设计"已成第一原则。</p>
       </div>
     </div>
-
     <div class="insight-card">
       <div class="insight-icon">📡</div>
       <div class="insight-text">
@@ -941,7 +846,6 @@ tags: []
         <p>ExecuTorch、AIRS、VRAM-Constrained xLM Inference、FaaScale、Rethinking DVFS for Mobile LLMs 等论文体现出推理战场向边缘延伸的强烈趋势，算力碎片化驱动系统设计多元化。</p>
       </div>
     </div>
-
     <div class="insight-card">
       <div class="insight-icon">🔬</div>
       <div class="insight-text">
@@ -949,9 +853,7 @@ tags: []
         <p>MLCommons Chakra、XProf、DriftBench、OSWorld-Human、LLMInfer-Bench 等专门讨论评测与可观测性的论文数量增加，反映出行业对"如何度量 AI 系统"的重视程度显著上升。</p>
       </div>
     </div>
-
   </div>
-
   <!-- ==================== 7. HOT KEYWORD HEATMAP ==================== -->
   <div class="section-title"><div class="dot"></div>热词热度图</div>
   <div class="heatmap">
@@ -982,15 +884,12 @@ tags: []
     <div class="hm-cell" style="background:#9d174d;font-size:0.9rem;">RAG System</div>
     <div class="hm-cell" style="background:#831843;">Multi-Agent</div>
   </div>
-
 </div>
-
 <!-- FOOTER -->
 <div class="footer">
   <strong>MLSys 2026 论文深度分析报告</strong><br>
   基于会议官网全部 135 篇录用论文 · 生成时间：2026年4月13日<br>
   <span style="font-size:0.75rem;margin-top:6px;display:block;color:#718096;">本报告由 AI 辅助分析生成，仅供研究参考</span>
 </div>
-
 </body>
 </html>

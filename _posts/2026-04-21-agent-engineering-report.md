@@ -3,7 +3,7 @@ title: "Agent-Engineering-Report"
 date: 2026-04-21
 layout: raw
 description: "Agent 工程化能力技术报告 2026"
-tags: [人机协作,智能决策,知识管理,协作编排,核心执行,架构总览：五层能力模型]
+tags: [人机协作,智能决策,知识管理,协作编排,核心执行]
 ---
 <html lang="zh-CN">
 <head>
