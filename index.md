@@ -126,9 +126,9 @@ title: 深度报告
       // 分类过滤
       var matchCategory = true;
       if (category === 'daily') {
-        matchCategory = title.indexOf('日报') > -1 || title.indexOf('周报') > -1;
+        matchCategory = title.indexOf('日报') > -1 || title.indexOf('周报') > -1 || title.indexOf('月报') > -1;
       } else if (category === 'deep') {
-        matchCategory = title.indexOf('日报') === -1 && title.indexOf('周报') === -1;
+        matchCategory = title.indexOf('日报') === -1 && title.indexOf('周报') === -1 && title.indexOf('月报') === -1;
       }
 
       // 标签过滤（展开为所有变体匹配）
