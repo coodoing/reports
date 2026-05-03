@@ -12,6 +12,7 @@ Gemfile.lock
 originals/
 scripts/
 docs/
+data/
 
 # IDE
 .vscode/
