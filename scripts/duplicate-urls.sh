@@ -3,7 +3,7 @@
 
 cd _site/reports
 
-# ML sys reports
+# reports
 cp mlsys2026-analysis.html mlsys2026_analysis.html
 cp agent-engineering-report.html agent_engineering_report.html
 cp ai-weekly-2026-04-19.html ai_weekly_2026-04-19.html
