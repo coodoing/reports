@@ -72,28 +72,43 @@ title: 深度报告
       .replace(/^(AI|AI\s+)/i, '')
       .replace(/系统$/, '')
       .replace(/&amp;/g, '')
-      .trim();
-  }
+.trim();
+   }
 
-  // 从所有 card 收集 tags，按归一化名分组
+  // 从所有 card 收集 tags，按归一化名分组，并统计频次
   var tagGroups = {};
   cards.forEach(function(card) {
     var tags = [];
     try { tags = JSON.parse(card.getAttribute('data-tags') || '[]'); } catch(e) {}
     tags.forEach(function(t) {
       var key = normalizeTag(t);
-      if (!tagGroups[key]) tagGroups[key] = { display: t, variants: [] };
+      if (!tagGroups[key]) tagGroups[key] = { display: t, variants: [], count: 0 };
+      tagGroups[key].count++;
       if (tagGroups[key].variants.indexOf(t) === -1) tagGroups[key].variants.push(t);
       // 用最短的作为显示名
       if (t.length < tagGroups[key].display.length) tagGroups[key].display = t;
     });
   });
 
-  // 排序并渲染标签 checkbox
-  var sortedKeys = Object.keys(tagGroups).sort();
-  sortedKeys.forEach(function(key) {
+  // 按热度（出现频次）降序排序
+  var sortedKeys = Object.keys(tagGroups).sort(function(a, b) {
+    if (tagGroups[b].count !== tagGroups[a].count) {
+      return tagGroups[b].count - tagGroups[a].count;
+    }
+    return a.localeCompare(b);
+  });
+
+  var TAG_DISPLAY_LIMIT = 30;
+  var showHidden = false;
+
+  // 渲染标签 checkbox
+  sortedKeys.forEach(function(key, i) {
     var label = document.createElement('label');
     label.className = 'tag-filter';
+    if (i >= TAG_DISPLAY_LIMIT) {
+      label.style.display = 'none';
+      label.setAttribute('data-collapsed', 'true');
+    }
     var cb = document.createElement('input');
     cb.type = 'checkbox';
     cb.value = key;
@@ -104,6 +119,22 @@ title: 深度报告
     label.appendChild(span);
     tagFilters.appendChild(label);
   });
+
+  // 展开更多按钮
+  if (sortedKeys.length > TAG_DISPLAY_LIMIT) {
+    var btn = document.createElement('button');
+    btn.className = 'tag-expand-btn';
+    btn.textContent = '展开更多 (' + (sortedKeys.length - TAG_DISPLAY_LIMIT) + ')';
+    btn.addEventListener('click', function() {
+      showHidden = !showHidden;
+      var collapsed = tagFilters.querySelectorAll('[data-collapsed="true"]');
+      collapsed.forEach(function(el) {
+        el.style.display = showHidden ? '' : 'none';
+      });
+      btn.textContent = showHidden ? '收起' : '展开更多 (' + (sortedKeys.length - TAG_DISPLAY_LIMIT) + ')';
+    });
+    tagFilters.appendChild(btn);
+  }
 
   function getSelectedKeys() {
     var selected = [];
