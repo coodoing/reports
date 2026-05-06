@@ -172,10 +172,14 @@ main {
 }
 
 .card-title {
-  font-size: 16px;
+  margin: 0 0 8px;
+  font-size: 18px;
   font-weight: 600;
-  margin-bottom: 8px;
-  line-height: 1.4;
+}
+
+.sticky-icon {
+  margin-right: 4px;
+  display: inline-block;
 }
 
 .card-excerpt {

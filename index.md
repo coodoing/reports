@@ -5,7 +5,20 @@ title: 深度报告
 
 <div class="home-layout">
   <div class="post-grid" id="postGrid">
-    {% for post in site.posts %}
+    {% comment %}分离置顶和非置顶文章{% endcomment %}
+{% assign sticky_posts = "" | split: "" %}
+{% assign regular_posts = "" | split: "" %}
+{% for post in site.posts %}
+  {% if post.sticky %}
+    {% assign sticky_posts = sticky_posts | push: post %}
+  {% else %}
+    {% assign regular_posts = regular_posts | push: post %}
+  {% endif %}
+{% endfor %}
+{% assign sticky_sorted = sticky_posts | sort: "date" %}
+{% assign regular_sorted = regular_posts | sort: "date" | reverse %}
+{% assign sorted_posts = sticky_sorted | concat: regular_sorted %}
+    {% for post in sorted_posts %}
       {% assign minutes = post.content | strip_html | size | divided_by: 600 | ceil %}
       <article class="post-card"
         data-title="{{ post.title | escape }}"
@@ -16,7 +29,10 @@ title: 深度报告
             <span class="card-date">{{ post.date | date: "%Y年%m月%d日" }}</span>
             <span class="card-read-time">{{ minutes }} min read</span>
           </div>
-          <h2 class="card-title">{{ post.title }}</h2>
+          <h2 class="card-title">
+            {% if post.sticky %}<span class="sticky-icon">📌</span>{% endif %}
+            {{ post.title }}
+          </h2>
           <p class="card-excerpt">{{ post.description }}</p>
           <div class="card-tags">
             {% if post.tags %}

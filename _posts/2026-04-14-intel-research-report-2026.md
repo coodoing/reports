@@ -1,6 +1,7 @@
 ---
 title: "Intel-Research-Report-2026"
 date: 2026-04-14
+sticky: true
 layout: raw
 description: "英特尔深度调研报告 2026"
 tags: [财报,CPU涨价,产能规划,18A工艺,AI服务器,产品与竞争,大客户订单,马斯克]
