@@ -262,7 +262,7 @@ tags: [训练推理,Agent,量化 & 压缩,NVFP4,编译器 & 调度优化]
   <div class="hero-inner">
     <div class="hero-badge">研究报告</div>
     <h1>MLSys 2026 <span>论文深度分析</span></h1>
-    <p>对会议全部 135 篇录用论文进行系统分类、核心贡献提炼与朙�来技术趋势预测，覆盖 LLM 推理服务、训练系统、AI Agent、量化压缩、编译器等核心赛道。</p>
+    <p>对会议全部 135 篇录用论文进行系统分类、核心贡献提炼与未来技术趋势预测，覆盖 LLM 推理服务、训练系统、AI Agent、量化压缩、编译器等核心赛道。</p>
     <div class="hero-meta">
       <div class="hero-stat"><span class="num">135</span><span class="label">录用论文</span></div>
       <div class="hero-stat"><span class="num">10</span><span class="label">研究方向</span></div>
