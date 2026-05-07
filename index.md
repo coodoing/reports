@@ -44,6 +44,7 @@ title: 深度报告
         </a>
       </article>
     {% endfor %}
+    <div class="pagination" id="pagination"></div>
   </div>
 
   <aside class="sidebar">
@@ -65,6 +66,11 @@ title: 深度报告
   var tagFilters = document.getElementById('tagFilters');
   var searchInput = document.getElementById('searchInput');
   var searchBtn = document.getElementById('searchBtn');
+  var postGrid = document.getElementById('postGrid');
+  var paginationEl = document.getElementById('pagination');
+
+  var pageSize = 20;
+  var currentPage = 1;
 
   // 归一化函数 - 自动合并相似标签
   function normalizeTag(tag) {
@@ -164,6 +170,7 @@ title: 深度报告
     var expandedTags = expandKeys(selectedKeys);
     var searchText = searchInput ? searchInput.value.toLowerCase() : '';
 
+    var visibleCards = [];
     cards.forEach(function(card) {
       var title = (card.getAttribute('data-title') || '').toLowerCase();
       var desc = (card.getAttribute('data-description') || '').toLowerCase();
@@ -190,8 +197,80 @@ title: 深度报告
         matchSearch = title.indexOf(searchText) > -1 || desc.indexOf(searchText) > -1;
       }
 
-      card.style.display = (matchCategory && matchTag && matchSearch) ? '' : 'none';
+      card.style.display = 'none';
+      if (matchCategory && matchTag && matchSearch) {
+        visibleCards.push(card);
+      }
     });
+
+    var totalPages = Math.max(1, Math.ceil(visibleCards.length / pageSize));
+    if (currentPage > totalPages) currentPage = totalPages;
+
+    var start = (currentPage - 1) * pageSize;
+    var end = Math.min(start + pageSize, visibleCards.length);
+    for (var i = start; i < end; i++) {
+      visibleCards[i].style.display = '';
+    }
+
+    renderPagination(totalPages, visibleCards.length);
+  }
+
+  function renderPagination(totalPages, totalCount) {
+    paginationEl.innerHTML = '';
+    if (totalPages <= 1) return;
+
+    var nav = document.createElement('div');
+    nav.className = 'pagination-nav';
+
+    // 上一页
+    var prev = document.createElement('a');
+    prev.className = 'page-link' + (currentPage <= 1 ? ' disabled' : '');
+    prev.textContent = '← 上一页';
+    if (currentPage > 1) {
+      prev.addEventListener('click', function(e) {
+        e.preventDefault();
+        currentPage--;
+        filterCards();
+        document.querySelector('.post-grid').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    }
+    nav.appendChild(prev);
+
+    // 页码
+    var pageStart = Math.max(1, currentPage - 2);
+    var pageEnd = Math.min(totalPages, pageStart + 4);
+    pageStart = Math.max(1, pageEnd - 4);
+
+    for (var p = pageStart; p <= pageEnd; p++) {
+      var link = document.createElement('a');
+      link.className = 'page-link' + (p === currentPage ? ' active' : '');
+      link.textContent = p;
+      link.addEventListener('click', (function(page) {
+        return function(e) {
+          e.preventDefault();
+          currentPage = page;
+          filterCards();
+          document.querySelector('.post-grid').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        };
+      })(p));
+      nav.appendChild(link);
+    }
+
+    // 下一页
+    var next = document.createElement('a');
+    next.className = 'page-link' + (currentPage >= totalPages ? ' disabled' : '');
+    next.textContent = '下一页 →';
+    if (currentPage < totalPages) {
+      next.addEventListener('click', function(e) {
+        e.preventDefault();
+        currentPage++;
+        filterCards();
+        document.querySelector('.post-grid').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    }
+    nav.appendChild(next);
+
+    paginationEl.appendChild(nav);
   }
 
   // 导航点击
@@ -200,22 +279,32 @@ title: 深度报告
       e.preventDefault();
       navLinks.forEach(function(l) { l.classList.remove('active'); });
       this.classList.add('active');
+      currentPage = 1;
       filterCards();
     });
   });
 
   // 标签点击
-  tagFilters.addEventListener('change', filterCards);
+  tagFilters.addEventListener('change', function() {
+    currentPage = 1;
+    filterCards();
+  });
 
   // 搜索按钮点击
   if (searchBtn) {
-    searchBtn.addEventListener('click', filterCards);
+    searchBtn.addEventListener('click', function() {
+      currentPage = 1;
+      filterCards();
+    });
   }
 
   // 回车触发搜索
   if (searchInput) {
     searchInput.addEventListener('keydown', function(e) {
-      if (e.key === 'Enter') filterCards();
+      if (e.key === 'Enter') {
+        currentPage = 1;
+        filterCards();
+      }
     });
   }
 
