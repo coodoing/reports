@@ -23,7 +23,8 @@ title: 深度报告
       <article class="post-card"
         data-title="{{ post.title | escape }}"
         data-description="{{ post.description | escape }}"
-        data-tags='{{ post.tags | jsonify | escape }}'>
+        data-tags='{{ post.tags | jsonify | escape }}'
+        data-type="{% if post.type %}{{ post.type }}{% elsif post.title contains '日报' or post.title contains '周报' or post.title contains '月报' %}tech{% else %}deep{% endif %}">
         <a href="{{ post.url | relative_url }}">
           <div class="card-meta">
             <span class="card-date">{{ post.date | date: "%Y年%m月%d日" }}</span>
@@ -165,7 +166,7 @@ title: 深度报告
 
   function filterCards() {
     var activeFilter = document.querySelector('.nav-link.active');
-    var category = activeFilter ? activeFilter.getAttribute('data-filter') : 'daily';
+    var category = activeFilter ? activeFilter.getAttribute('data-filter') : 'all';
     var selectedKeys = getSelectedKeys();
     var expandedTags = expandKeys(selectedKeys);
     var searchText = searchInput ? searchInput.value.toLowerCase() : '';
@@ -178,11 +179,12 @@ title: 深度报告
       try { tags = JSON.parse(card.getAttribute('data-tags') || '[]'); } catch(e) {}
 
       // 分类过滤
+      var cardType = card.getAttribute('data-type');
       var matchCategory = true;
-      if (category === 'daily') {
-        matchCategory = title.indexOf('日报') > -1 || title.indexOf('周报') > -1 || title.indexOf('月报') > -1;
+      if (category === 'tech') {
+        matchCategory = cardType === 'tech';
       } else if (category === 'deep') {
-        matchCategory = title.indexOf('日报') === -1 && title.indexOf('周报') === -1 && title.indexOf('月报') === -1;
+        matchCategory = cardType === 'deep';
       }
 
       // 标签过滤（展开为所有变体匹配）
