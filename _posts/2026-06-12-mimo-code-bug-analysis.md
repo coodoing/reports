@@ -1,6 +1,6 @@
 ---
 title: "MimoCode Bug分布分析报告及与OpenCode对比"
-date: 2026-06-13
+date: 2026-06-12
 type: deep
 layout: raw
 description: "MiMo-Code 134 Bug 全量分析 × OpenCode (anomalyco) 对照报告"
