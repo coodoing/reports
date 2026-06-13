@@ -350,6 +350,3 @@ tags: [崩溃 / 闪退 / Segfault,TUI 显示 / 主题 / 终端兼容,输入 / �
   </ul>
 </div>
 <p style="color:#656d76; font-size:12px; margin-top:20px; text-align:center;">报告生成时间：2026-06-12 | 全量 134 个 MiMo-Code Bug | 来源：用户提供完整列表 + anomalyco/opencode GitHub Search API</p>
-</div>
-</body>
-</html>
