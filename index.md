@@ -238,24 +238,95 @@ title: 深度报告
     }
     nav.appendChild(prev);
 
-    // 页码
-    var pageStart = Math.max(1, currentPage - 2);
-    var pageEnd = Math.min(totalPages, pageStart + 4);
-    pageStart = Math.max(1, pageEnd - 4);
-
-    for (var p = pageStart; p <= pageEnd; p++) {
-      var link = document.createElement('a');
-      link.className = 'page-link' + (p === currentPage ? ' active' : '');
-      link.textContent = p;
-      link.addEventListener('click', (function(page) {
+    // 页码（总页数 ≤5 显示全部，>5 显示动态3页码）
+    if (totalPages <= 5) {
+      for (var p = 1; p <= totalPages; p++) {
+        var link = document.createElement('a');
+        link.className = 'page-link' + (p === currentPage ? ' active' : '');
+        link.textContent = p;
+        link.addEventListener('click', (function(page) {
+          return function(e) {
+            e.preventDefault();
+            currentPage = page;
+            filterCards();
+            document.querySelector('.post-grid').scrollIntoView({ behavior: 'smooth', block: 'start' });
+          };
+        })(p));
+        nav.appendChild(link);
+      }
+    } else {
+      // 第1页
+      var link1 = document.createElement('a');
+      link1.className = 'page-link' + (1 === currentPage ? ' active' : '');
+      link1.textContent = 1;
+      link1.addEventListener('click', (function(page) {
         return function(e) {
           e.preventDefault();
           currentPage = page;
           filterCards();
           document.querySelector('.post-grid').scrollIntoView({ behavior: 'smooth', block: 'start' });
         };
-      })(p));
-      nav.appendChild(link);
+      })(1));
+      nav.appendChild(link1);
+
+      // 中间页码
+      var middlePage;
+      var showEllipsisBefore = false;
+      var showEllipsisAfter = false;
+      if (currentPage <= 2) {
+        middlePage = 2;
+        showEllipsisAfter = (2 !== totalPages);
+      } else if (currentPage >= totalPages - 1) {
+        middlePage = totalPages - 1;
+        showEllipsisBefore = true;
+      } else {
+        middlePage = currentPage;
+        showEllipsisBefore = true;
+        showEllipsisAfter = true;
+      }
+
+      if (showEllipsisBefore) {
+        var ellipsis1 = document.createElement('span');
+        ellipsis1.className = 'page-link';
+        ellipsis1.textContent = '...';
+        ellipsis1.style.cursor = 'default';
+        nav.appendChild(ellipsis1);
+      }
+
+      var linkMid = document.createElement('a');
+      linkMid.className = 'page-link' + (middlePage === currentPage ? ' active' : '');
+      linkMid.textContent = middlePage;
+      linkMid.addEventListener('click', (function(page) {
+        return function(e) {
+          e.preventDefault();
+          currentPage = page;
+          filterCards();
+          document.querySelector('.post-grid').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        };
+      })(middlePage));
+      nav.appendChild(linkMid);
+
+      if (showEllipsisAfter) {
+        var ellipsis2 = document.createElement('span');
+        ellipsis2.className = 'page-link';
+        ellipsis2.textContent = '...';
+        ellipsis2.style.cursor = 'default';
+        nav.appendChild(ellipsis2);
+      }
+
+      // 最后一页
+      var linkN = document.createElement('a');
+      linkN.className = 'page-link' + (totalPages === currentPage ? ' active' : '');
+      linkN.textContent = totalPages;
+      linkN.addEventListener('click', (function(page) {
+        return function(e) {
+          e.preventDefault();
+          currentPage = page;
+          filterCards();
+          document.querySelector('.post-grid').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        };
+      })(totalPages));
+      nav.appendChild(linkN);
     }
 
     // 下一页
