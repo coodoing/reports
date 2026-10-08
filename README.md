@@ -1,1 +1,1 @@
-[深度报告地址](https://coodoing.github.io/reports/)
+[技术调研报告地址](https://coodoing.github.io/reports/)
