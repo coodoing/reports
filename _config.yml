@@ -34,6 +34,9 @@ plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
 
+feed:
+  excerpt_only: true
+
 collections:
   posts:
     output: true

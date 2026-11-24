@@ -80,6 +80,30 @@ main {
   top: 20px;
 }
 
+.rss-subscribe {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+  padding: 10px 12px;
+  border: 1px solid #eee;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #333;
+  text-decoration: none;
+}
+
+.rss-subscribe:hover {
+  border-color: #111;
+  background: #fafafa;
+}
+
+.rss-icon {
+  color: #f26522;
+  flex-shrink: 0;
+}
+
 .search-box {
   display: flex;
   gap: 6px;

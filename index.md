@@ -49,6 +49,16 @@ title: 深度报告
   </div>
 
   <aside class="sidebar">
+    <a href="{{ '/feed.xml' | relative_url }}" class="rss-subscribe" title="订阅 RSS">
+      <svg class="rss-icon" viewBox="0 0 24 24" width="15" height="15"
+           fill="none" stroke="currentColor" stroke-width="2"
+           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M4 11a9 9 0 0 1 9 9"></path>
+        <path d="M4 4a16 16 0 0 1 16 16"></path>
+        <circle cx="5" cy="19" r="1"></circle>
+      </svg>
+      <span>订阅 RSS</span>
+    </a>
     <div class="search-box">
       <input type="text" id="searchInput" placeholder="搜索文章...">
       <button id="searchBtn" class="search-btn">搜索</button>
